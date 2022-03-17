@@ -6,7 +6,7 @@ author = "Pranav Karawale"
 
 # Based on https://www.aleksandrhovhannisyan.com/blog/configuring-web-fonts-in-11ty-with-global-data/
 preloads = [
-    {as = "font", type = "font/woff2", href = "/roboto-slab-latin-variable-wghtOnly-normal.woff2"},
-    {as = "font", type = "font/woff2", href = "/VictorMono-Medium.woff2"},
-    {as = "style", href = "/main.css"}
+    {crossorigin = true, as = "font", type = "font/woff2", href = "/roboto-slab-latin-variable-wghtOnly-normal.woff2"},
+    {crossorigin = true, as = "font", type = "font/woff2", href = "/VictorMono-Medium.woff2"},
+    {crossorigin = true, as = "style", href = "/main.css"}
 ]
