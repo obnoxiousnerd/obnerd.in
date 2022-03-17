@@ -8,7 +8,7 @@
 
 {%- if site.preloads -%}
     {% for preload in site.preloads %}
-        <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+        <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin="{{ "crossorigin" if preload.crossorigin == true else preload.crossorigin }}"{% endif %}>
     {%- endfor -%}
 {%- endif -%}
 <link rel="shortcut icon" href="/favicon.png" type="image/png">
