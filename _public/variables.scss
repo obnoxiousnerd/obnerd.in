@@ -1,70 +1,70 @@
 :root {
-	--light-color-main: #ebffff;
-	--light-color-accent: #c2fdff;
-	--light-color-main-text: #292929;
-	--light-color-accent-text: #292929;
-	--light-color-anchor: #0040b6;
+  --light-color-main: #ebffff;
+  --light-color-accent: #c2fdff;
+  --light-color-main-text: #292929;
+  --light-color-accent-text: #292929;
+  --light-color-anchor: #0040b6;
 
-	--dark-color-main: #161517;
-	--dark-color-accent: #242124;
-	--dark-color-main-text: #fafafa;
-	--dark-color-accent-text: #ebeaeb;
-	--dark-color-anchor: #4fbeff;
+  --dark-color-main: #161517;
+  --dark-color-accent: #242124;
+  --dark-color-main-text: #fafafa;
+  --dark-color-accent-text: #ebeaeb;
+  --dark-color-anchor: #4fbeff;
 
-	// Typography scale: Major third
-	--font-size-title: 3.2rem;
-	--font-size-h1: 2.4rem;
-	--font-size-h2: 2rem;
-	--font-size-h3: 1.6rem;
-	--font-size-h4: 1.2rem;
-	--font-size-base: 1rem;
-	--font-size-small: 0.8rem;
+  // Typography scale: Major third
+  --font-size-title: 3.2rem;
+  --font-size-h1: 2.4rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.6rem;
+  --font-size-h4: 1.2rem;
+  --font-size-base: 1rem;
+  --font-size-small: 0.8rem;
 
-	--blockquote-border: 0.3rem solid #666;
-	--font-family: "Roboto Slab", serif;
-	--code-font-family: "Victor Mono", monospace;
-	--border-radius-generic: 5px;
+  --blockquote-border: 0.3rem solid #666;
+  --font-family: "Roboto Slab", serif;
+  --code-font-family: "Victor Mono", monospace;
+  --border-radius-generic: 5px;
 }
 
 @mixin main {
-	color: var(--color-main-text);
-	background-color: var(--color-main);
+  color: var(--color-main-text);
+  background-color: var(--color-main);
 }
 
 @mixin accent {
-	color: var(--color-accent-text);
-	background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  background-color: var(--color-accent);
 }
 
 @mixin size-md {
-	@media (max-width: 768px) {
-		@content;
-	}
+  @media (max-width: 768px) {
+    @content;
+  }
 }
 
 @mixin size-lg {
-	@media (min-width: 769px) {
-		@content;
-	}
+  @media (min-width: 769px) {
+    @content;
+  }
 }
 
 @mixin size-xl {
-	@media (min-width: 1025px) {
-		@content;
-	}
+  @media (min-width: 1025px) {
+    @content;
+  }
 }
 
 @mixin links {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	li:not(:last-child)::after {
-		display: inline;
-		content: "|";
-		margin: 0 1ch;
-	}
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li:not(:last-child)::after {
+    display: inline;
+    content: "|";
+    margin: 0 1ch;
+  }
 }

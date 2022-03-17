@@ -5,138 +5,138 @@
 
 // Fonts
 @font-face {
-	font-family: "Victor Mono";
-	font-style: normal;
-	font-weight: 400;
-	font-display: optional;
-	src: local("Victor Mono Medium"), local("VictorMono-Medium"),
-		local("Victor Mono"), local("VictorMono"),
-		url("./fonts/victor-mono-latin.woff2") format("woff2");
+  font-family: "Victor Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: local("Victor Mono Medium"), local("VictorMono-Medium"),
+    local("Victor Mono"), local("VictorMono"),
+    url("./fonts/victor-mono-latin.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Roboto Slab";
-	font-style: normal;
-	font-weight: 400;
-	font-display: optional;
-	src: local("Roboto Slab"), local("RobotoSlab"),
-		url("./fonts/roboto-slab-latin-variable-wghtOnly-normal.woff2")
-			format("woff2");
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: local("Roboto Slab"), local("RobotoSlab"),
+    url("./fonts/roboto-slab-latin-variable-wghtOnly-normal.woff2")
+      format("woff2");
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--color-main: var(--dark-color-main);
-		--color-accent: var(--dark-color-accent);
-		--color-main-text: var(--dark-color-main-text);
-		--color-accent-text: var(--dark-color-accent-text);
-		--color-anchor: var(--dark-color-anchor);
-	}
+  :root {
+    --color-main: var(--dark-color-main);
+    --color-accent: var(--dark-color-accent);
+    --color-main-text: var(--dark-color-main-text);
+    --color-accent-text: var(--dark-color-accent-text);
+    --color-anchor: var(--dark-color-anchor);
+  }
 }
 @media (prefers-color-scheme: light) {
-	:root {
-		--color-main: var(--light-color-main);
-		--color-accent: var(--light-color-accent);
-		--color-main-text: var(--light-color-main-text);
-		--color-accent-text: var(--light-color-accent-text);
-		--color-anchor: var(--light-color-anchor);
-	}
+  :root {
+    --color-main: var(--light-color-main);
+    --color-accent: var(--light-color-accent);
+    --color-main-text: var(--light-color-main-text);
+    --color-accent-text: var(--light-color-accent-text);
+    --color-anchor: var(--light-color-anchor);
+  }
 }
 
 body {
-	@include v.main;
-	font-family: var(--font-family);
-	margin: 0;
-	line-height: 1.5;
-	margin: 4rem auto;
-	margin-bottom: 0;
-	@include v.size-lg {
-		max-width: 60ch;
-	}
-	@include v.size-md {
-		max-width: calc(100vw - 2rem);
-	}
+  @include v.main;
+  font-family: var(--font-family);
+  margin: 0;
+  line-height: 1.5;
+  margin: 4rem auto;
+  margin-bottom: 0;
+  @include v.size-lg {
+    max-width: 60ch;
+  }
+  @include v.size-md {
+    max-width: calc(100vw - 2rem);
+  }
 }
 
 // Style links according to the current color scheme
 a,
 a:visited {
-	color: var(--color-anchor);
+  color: var(--color-anchor);
 }
 
 h1 {
-	font-size: var(--font-size-h1);
-	font-weight: 900;
+  font-size: var(--font-size-h1);
+  font-weight: 900;
 }
 h2 {
-	font-size: var(--font-size-h2);
+  font-size: var(--font-size-h2);
 }
 h3 {
-	font-size: var(--font-size-h3);
+  font-size: var(--font-size-h3);
 }
 h4 {
-	font-size: var(--font-size-h4);
+  font-size: var(--font-size-h4);
 }
 small {
-	font-size: var(--font-size-small);
+  font-size: var(--font-size-small);
 }
 
 // Just my personal preference how dl's should look like.
 dl {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	dd {
-		text-align: right;
-	}
+  display: grid;
+  grid-template-columns: auto 1fr;
+  dd {
+    text-align: right;
+  }
 }
 
 // Header anchor
 .header-anchor {
-	text-decoration: none;
-	margin-left: 0.5ch;
-	.visually-hidden {
-		display: none;
-	}
+  text-decoration: none;
+  margin-left: 0.5ch;
+  .visually-hidden {
+    display: none;
+  }
 }
 
 // Code font
 pre {
-	border-radius: var(--border-radius-generic);
+  border-radius: var(--border-radius-generic);
 }
 
 pre,
 code {
-	font-family: var(--code-font-family);
-	font-variant-ligatures: none;
+  font-family: var(--code-font-family);
+  font-variant-ligatures: none;
 }
 
 code {
-	word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 header {
-	text-align: center;
+  text-align: center;
 }
 
 main {
-	margin: 1rem auto;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+  margin: 1rem auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
-	// Don't let images overflow!
-	img {
-		max-width: 100%;
-		height: auto;
-		object-fit: cover;
-	}
+  // Don't let images overflow!
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 }
 
 // Blog post previews
 section.post-preview {
-	@include v.accent;
-	margin: 1rem;
-	padding: 1rem;
-	h2 {
-		margin: 0;
-	}
+  @include v.accent;
+  margin: 1rem;
+  padding: 1rem;
+  h2 {
+    margin: 0;
+  }
 }
