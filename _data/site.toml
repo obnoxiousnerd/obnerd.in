@@ -5,7 +5,8 @@ pingback = "https://webmention.io/karawale.in/xmlrpc"
 author = "Pranav Karawale"
 
 # Based on https://www.aleksandrhovhannisyan.com/blog/configuring-web-fonts-in-11ty-with-global-data/
-preload = [
-    {as = "font", type = "font/woff2", url = "/fonts/roboto-slab-latin-variable-wghtOnly-normal.woff2"},
-    {as = "font", type = "font/woff2", url = "/fonts/VictorMono-Medium.woff2"}
+preloads = [
+    {as = "font", type = "font/woff2", href = "/roboto-slab-latin-variable-wghtOnly-normal.woff2"},
+    {as = "font", type = "font/woff2", href = "/VictorMono-Medium.woff2"},
+    {as = "style", href = "/main.css"}
 ]
