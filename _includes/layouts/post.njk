@@ -1,14 +1,16 @@
 ---
 layout: main
 ---
-<article>
-  <h1 class="title">{{ title }}</h1>
+<article class="h-entry">
+  <h1 class="p-name" class="title">{{ title }}</h1>
   <aside>
-    <small datetime="{{ date | dateToRfc3339 }}">
+    <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
       {{ date | dateToHuman }}
-    </small>
+    </time>
     {{ content | toc | safe }}
   </aside>
   <hr/>
-  {{ content | safe }}
+  <div class="e-content">
+    {{ content | safe }}
+  </div>
 </article>

@@ -1,10 +1,10 @@
-<section class="post-preview">
-  <h2>{{ post.data.title }}</h2>
+<section class="h-entry post-preview">
+  <h2 class="p-name">{{ post.data.title }}</h2>
   <small>
-    <time datetime="{{ post.data.date | dateToRfc3339 }}">
+    <time class="dt-published" datetime="{{ post.data.date | dateToRfc3339 }}">
       {{ post.data.date | dateToHuman }}
     </time>
   </small>
-  <p>{{ post.data.description }}</p>
-  <a href="{{ post.url }}">Read more...</a>
+  <p class="p-summary">{{ post.data.description }}</p>
+  <a class="u-url" href="{{ post.url }}">Read more...</a>
 </section>
