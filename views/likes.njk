@@ -12,7 +12,7 @@ title: Likes
         <small>
             <time datetime="{{ like.date | dateToRfc3339 }}">{{ like.date | dateToHuman }}</time>
             <br>
-            <a href="/likes/{{ like.url | contentHash }}">permalink</a>
+            <a class="u-url" href="/likes/{{ like.url | contentHash }}">permalink</a>
         </small>
     </section>
 {% endfor %}
