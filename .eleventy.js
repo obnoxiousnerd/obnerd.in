@@ -12,59 +12,59 @@ const contentHash = require("./_filters/hash");
  * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig
  */
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setUseGitIgnore(false);
-  eleventyConfig.addPassthroughCopy({ _assets: "." });
+	eleventyConfig.setUseGitIgnore(false);
+	eleventyConfig.addPassthroughCopy({ _assets: "." });
 
-  // Set watch targets
-  eleventyConfig.addWatchTarget("./_public");
+	// Set watch targets
+	eleventyConfig.addWatchTarget("./_public");
 
-  // Add TOML support for data
-  eleventyConfig.addDataExtension("toml", (contents) => toml.parse(contents));
+	// Add TOML support for data
+	eleventyConfig.addDataExtension("toml", (contents) => toml.parse(contents));
 
-  eleventyConfig.addCollection("posts", (collection) => {
-    return collection.getFilteredByGlob("views/posts/*.md");
-  });
-  eleventyConfig.setDataDeepMerge(true);
+	eleventyConfig.addCollection("posts", (collection) => {
+		return collection.getFilteredByGlob("views/posts/*.md");
+	});
+	eleventyConfig.setDataDeepMerge(true);
 
-  // Markdown plugins!
-  const mdFactory = md({ html: true })
-    .use(anchor, {
-      levels: [1, 2, 3, 4, 5],
-      slugify: require("slug"),
-    })
-    .use(shiki, {
-      theme: "ayu-dark",
-    });
-  eleventyConfig.setLibrary("md", mdFactory);
+	// Markdown plugins!
+	const mdFactory = md({ html: true })
+		.use(anchor, {
+			levels: [1, 2, 3, 4, 5],
+			slugify: require("slug"),
+		})
+		.use(shiki, {
+			theme: "ayu-dark",
+		});
+	eleventyConfig.setLibrary("md", mdFactory);
 
-  // Table of contents
-  eleventyConfig.addPlugin(toc, {
-    ul: true,
-    tags: ["h1", "h2", "h3", "h4"],
-  });
+	// Table of contents
+	eleventyConfig.addPlugin(toc, {
+		ul: true,
+		tags: ["h1", "h2", "h3", "h4"],
+	});
 
-  // Add rss
-  eleventyConfig.addPlugin(rss);
+	// Add rss
+	eleventyConfig.addPlugin(rss);
 
-  // Add filters
-  eleventyConfig.addFilter("dateToHuman", (date) =>
-    new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "2-digit",
-    }).format(new Date(date))
-  );
-  eleventyConfig.addFilter("contentHash", contentHash(6));
+	// Add filters
+	eleventyConfig.addFilter("dateToHuman", (date) =>
+		new Intl.DateTimeFormat("en-US", {
+			year: "numeric",
+			month: "long",
+			day: "2-digit",
+		}).format(new Date(date))
+	);
+	eleventyConfig.addFilter("contentHash", contentHash(4));
 
-  return {
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    dir: {
-      input: "views",
-      output: "dist",
-      includes: "../_includes",
-      layouts: "../_includes/layouts",
-      data: "../_data",
-    },
-  };
+	return {
+		markdownTemplateEngine: "njk",
+		htmlTemplateEngine: "njk",
+		dir: {
+			input: "views",
+			output: "dist",
+			includes: "../_includes",
+			layouts: "../_includes/layouts",
+			data: "../_data",
+		},
+	};
 };
