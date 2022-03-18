@@ -8,7 +8,7 @@ permalink: "likes/{{ like.url | contentHash }}/"
 ---
 <article class="h-entry">
     <p>
-        I liked <a href="{{ like.url }}">{{ like.url }}</a> 
+        I liked <a class="u-like-of" href="{{ like.url }}">{{ like.url }}</a> 
         on <time datetime="{{ like.date | dateToRfc3339 }}">
             {{ like.date | dateToHuman }}</time>
     </p>

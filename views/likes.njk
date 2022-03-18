@@ -5,9 +5,9 @@ title: Likes
 <h1>{{ title }}</h1>
 
 {% for like in likes.likes %}
-    <section class="post-preview">
+    <section class="post-preview h-entry">
         <p>
-            <a class="u-like-of" href="{{ like.url }}">{{ like.url }}</a>
+            <a href="{{ like.url }}">{{ like.url }}</a>
         </p>
         <small>
             <time datetime="{{ like.date | dateToRfc3339 }}">{{ like.date | dateToHuman }}</time>
