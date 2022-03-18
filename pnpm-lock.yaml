@@ -5,6 +5,7 @@ specifiers:
   '@11ty/eleventy-plugin-rss': ^1.1.2
   '@parcel/plugin': ^2.3.2
   '@parcel/transformer-sass': 2.3.2
+  blake3: ^2.1.7
   eleventy-plugin-toc: ^1.1.5
   markdown-it: ^12.3.2
   markdown-it-anchor: ^8.4.1
@@ -22,6 +23,7 @@ dependencies:
   '@11ty/eleventy-plugin-rss': 1.1.2
   '@parcel/plugin': 2.3.2
   '@parcel/transformer-sass': 2.3.2
+  blake3: 2.1.7
   eleventy-plugin-toc: 1.1.5
   markdown-it: 12.3.2
   markdown-it-anchor: 8.4.1_markdown-it@12.3.2
@@ -272,7 +274,7 @@ packages:
       '@parcel/package-manager': 2.3.2_@parcel+core@2.3.2
       '@parcel/plugin': 2.3.2
       '@parcel/source-map': 2.0.2
-      '@parcel/types': 2.3.2_@parcel+core@2.3.2
+      '@parcel/types': 2.3.2
       '@parcel/utils': 2.3.2
       '@parcel/workers': 2.3.2_@parcel+core@2.3.2
       abortcontroller-polyfill: 1.7.3
@@ -373,8 +375,6 @@ packages:
       '@parcel/diagnostic': 2.3.2
       '@parcel/plugin': 2.3.2
       nullthrows: 1.1.1
-    transitivePeerDependencies:
-      - '@parcel/core'
     dev: false
 
   /@parcel/node-resolver-core/2.3.2:
@@ -541,16 +541,14 @@ packages:
       - '@parcel/core'
     dev: false
 
-  /@parcel/reporter-cli/2.3.2_@parcel+core@2.3.2:
+  /@parcel/reporter-cli/2.3.2:
     resolution: {integrity: sha512-VYetmTXqW83npsvVvqlQZTbF3yVL3k/FCCl3kSWvOr9LZA0lmyqJWPjMHq37yIIOszQN/p5guLtgCjsP0UQw1Q==}
     engines: {node: '>= 12.0.0', parcel: ^2.3.2}
     dependencies:
       '@parcel/plugin': 2.3.2
-      '@parcel/types': 2.3.2_@parcel+core@2.3.2
+      '@parcel/types': 2.3.2
       '@parcel/utils': 2.3.2
       chalk: 4.1.2
-    transitivePeerDependencies:
-      - '@parcel/core'
     dev: false
 
   /@parcel/reporter-dev-server/2.3.2:
@@ -767,20 +765,6 @@ packages:
       '@parcel/package-manager': 2.3.2
       '@parcel/source-map': 2.0.2
       '@parcel/workers': 2.3.2
-      utility-types: 3.10.0
-    transitivePeerDependencies:
-      - '@parcel/core'
-    dev: false
-
-  /@parcel/types/2.3.2_@parcel+core@2.3.2:
-    resolution: {integrity: sha512-C77Ct1xNM7LWjPTfe/dQ/9rq1efdsX5VJu2o8/TVi6qoFh64Wp/c5/vCHwKInOTBZUTchVO6z4PGJNIZoUVJuA==}
-    dependencies:
-      '@parcel/cache': 2.3.2_@parcel+core@2.3.2
-      '@parcel/diagnostic': 2.3.2
-      '@parcel/fs': 2.3.2_@parcel+core@2.3.2
-      '@parcel/package-manager': 2.3.2_@parcel+core@2.3.2
-      '@parcel/source-map': 2.0.2
-      '@parcel/workers': 2.3.2_@parcel+core@2.3.2
       utility-types: 3.10.0
     transitivePeerDependencies:
       - '@parcel/core'
@@ -1077,6 +1061,11 @@ packages:
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
+    dev: false
+
+  /blake3/2.1.7:
+    resolution: {integrity: sha512-5d+TdKJvju96IyEaGJ0eO6CHbckWi+NBrCezGYM/WsnI3R03aLL2TWfsuZSh1rs0fTv/L3ps/r0vykjYurcIwA==}
+    requiresBuild: true
     dev: false
 
   /boolbase/1.0.0:
@@ -2900,8 +2889,6 @@ packages:
       '@babel/runtime': 7.17.7
       '@parcel/namer-default': 2.3.2
       '@parcel/plugin': 2.3.2
-    transitivePeerDependencies:
-      - '@parcel/core'
     dev: false
 
   /parcel/2.3.2:
@@ -2916,7 +2903,7 @@ packages:
       '@parcel/fs': 2.3.2_@parcel+core@2.3.2
       '@parcel/logger': 2.3.2
       '@parcel/package-manager': 2.3.2_@parcel+core@2.3.2
-      '@parcel/reporter-cli': 2.3.2_@parcel+core@2.3.2
+      '@parcel/reporter-cli': 2.3.2
       '@parcel/reporter-dev-server': 2.3.2
       '@parcel/utils': 2.3.2
       chalk: 4.1.2
