@@ -6,6 +6,14 @@
 <link rel="me" href="https://github.com/retronav"/>
 <link rel="me" href="https://tilde.zone/@pranav"/>
 
+{% if site.webmention %}
+    <link rel="webmention" href="{{ site.webmention }}"/>
+{% endif %}
+
+{% if site.pingback %}
+    <link rel="pingback" href="{{ site.pingback }}"/>
+{% endif %}
+
 {%- if site.preloads -%}
     {% for preload in site.preloads %}
         <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin="{{ "crossorigin" if preload.crossorigin == true else preload.crossorigin }}"{% endif %}>
