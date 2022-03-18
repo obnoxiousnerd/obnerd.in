@@ -7,10 +7,10 @@ title: Likes
 {% for like in likes.likes %}
     <section class="post-preview h-entry">
         <p>
-            <a href="{{ like.url }}">{{ like.url }}</a>
+            <a class="p-name" href="{{ like.url }}">{{ like.url }}</a>
         </p>
         <small>
-            <time datetime="{{ like.date | dateToRfc3339 }}">{{ like.date | dateToHuman }}</time>
+            <time class="dt-published" datetime="{{ like.date | dateToRfc3339 }}">{{ like.date | dateToHuman }}</time>
             <br>
             <a class="u-url" href="/likes/{{ like.url | contentHash }}">permalink</a>
         </small>
