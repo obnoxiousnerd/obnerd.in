@@ -5,7 +5,7 @@ const rss = require("@11ty/eleventy-plugin-rss");
 const shiki = require("markdown-it-shiki").default;
 const toc = require("eleventy-plugin-toc");
 
-const contentHash = require("./_filters/hash");
+const contentHash = require("./_11ty/filters");
 
 /**
  *
