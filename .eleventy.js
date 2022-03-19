@@ -21,9 +21,10 @@ module.exports = function (eleventyConfig) {
 	// Add TOML support for data
 	eleventyConfig.addDataExtension("toml", (contents) => toml.parse(contents));
 
-	eleventyConfig.addCollection("posts", (collection) => {
-		return collection.getFilteredByGlob("views/posts/*.md");
+	eleventyConfig.addCollection("notes", (collection) => {
+		return collection.getFilteredByGlob("views/notes/*.md");
 	});
+
 	eleventyConfig.setDataDeepMerge(true);
 
 	// Markdown plugins!

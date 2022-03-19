@@ -1,0 +1,31 @@
+---
+layout: main
+eleventyComputed:
+    title: "Note written on {{ date | dateToHuman }}"
+---
+
+<article class="h-entry">
+    <header>
+        <h1 class="p-name">{{ title }}</h1>
+        <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
+            {{ date | dateToHuman }}</time>
+        <span class="seperator">&centerdot;</span>
+        By {% include "thingmejacks/h-card-mini.njk" %}
+        <br>
+        <small>
+            <a class="u-url" href="/likes/{{ like.url | contentHash }}">permalink</a>
+        </small>
+    </header>
+    <aside>
+        <span>
+            <i>
+                {% if url %}
+             Replying to <a class="u-in-reply-to" href="{{ url }}">{{ url }}</a>
+                {% endif %}
+            </i>
+        </span>
+    </aside>
+    <div class="e-content p-content">
+        {{ content | safe }}
+    </div>
+</article>
