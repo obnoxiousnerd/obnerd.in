@@ -4,7 +4,7 @@ title: Posts
 
 <h1 class="title">{{title}}</h1>
 
-{% set postslist = collections.posts%}
+{% set postslist = collections.posts %}
 {% for post in postslist | reverse %}
   {% include "partials/post-preview.njk" %}
 {% endfor %}

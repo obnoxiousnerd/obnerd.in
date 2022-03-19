@@ -25,6 +25,13 @@ module.exports = function (eleventyConfig) {
 		return collection.getFilteredByGlob("views/notes/*.md");
 	});
 
+	eleventyConfig.addCollection("content", (collection) => {
+		return [
+			...collection.getFilteredByTag("likes"),
+			...collection.getFilteredByGlob(["views/notes/*.md", "views/posts/*.md"]),
+		];
+	});
+
 	eleventyConfig.setDataDeepMerge(true);
 
 	// Markdown plugins!

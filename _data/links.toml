@@ -2,6 +2,7 @@
 Home = "/"
 Contact = "/contact"
 Projects = "/projects"
+RSS = "/feed.xml"
 
 [nav.Writings]
 Blog = "/posts"
