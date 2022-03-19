@@ -1,7 +1,7 @@
 title = "Pranav Karawale"
 description = "Pranav Karawale's various things in writing."
-webmention = "https://webmention.io/karawale.in/webmention"
-pingback = "https://webmention.io/karawale.in/xmlrpc"
+webmentionUrl = "https://webmention.io/karawale.in/webmention"
+pingbackUrl = "https://webmention.io/karawale.in/xmlrpc"
 author = "Pranav Karawale"
 
 # Based on https://www.aleksandrhovhannisyan.com/blog/configuring-web-fonts-in-11ty-with-global-data/

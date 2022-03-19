@@ -2,11 +2,15 @@
 layout: main
 ---
 <article class="h-entry">
-  <h1 class="p-name" class="title">{{ title }}</h1>
-  <aside>
+  <header>
+    <h1 class="p-name" class="title">{{ title }}</h1>
     <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
       {{ date | dateToHuman }}
     </time>
+    <span class="seperator">&centerdot;</span>
+    <span>By</span>{% include "thingmejacks/h-card-mini.njk" %}
+  </header>
+  <aside>
     {{ content | toc | safe }}
   </aside>
   <hr/>

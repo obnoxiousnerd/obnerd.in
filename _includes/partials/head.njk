@@ -7,11 +7,11 @@
 <link rel="me" href="https://tilde.zone/@pranav"/>
 
 {% if site.webmention %}
-    <link rel="webmention" href="{{ site.webmention }}"/>
+    <link rel="webmention" href="{{ site.webmentionUrl }}"/>
 {% endif %}
 
 {% if site.pingback %}
-    <link rel="pingback" href="{{ site.pingback }}"/>
+    <link rel="pingback" href="{{ site.pingbackUrl }}"/>
 {% endif %}
 
 {%- if site.preloads -%}
