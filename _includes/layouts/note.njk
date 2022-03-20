@@ -4,18 +4,7 @@ eleventyComputed:
     title: "Note written on {{ date | dateToHuman }}"
 ---
 
-<article class="h-entry">
-    <header>
-        <h1>{{ title }}</h1>
-        <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
-            {{ date | dateToHuman }}</time>
-        <span class="seperator">&centerdot;</span>
-        By {% include "thingmejacks/h-card-mini.njk" %}
-        <br>
-        <small>
-            <a class="u-url" href="{{ page.url }}">permalink</a>
-        </small>
-    </header>
+<article class="note h-entry">
     <aside>
         {% if url %}
             <small>
@@ -27,7 +16,16 @@ eleventyComputed:
         {% endif %}
     </aside>
     <div class="p-content">
-        <data class="p-bridgy-omit-link" value="maybe"/>
         {{ content | safe }}
     </div>
+    By {% include "thingmejacks/h-card-mini.njk" %}
+    <br>
+    <small>
+        <data class="p-bridgy-omit-link" value="maybe"/>
+        <a class="u-url" href="{{ page.url }}">permalink</a>
+    </small>
+    <hr>
+    <footer>
+        {% include "../thingmejacks/webmentions.njk" %}
+    </footer>
 </article>

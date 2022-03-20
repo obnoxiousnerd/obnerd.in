@@ -25,3 +25,40 @@
 		vertical-align: middle;
 	}
 }
+
+// Send webmention form
+form.send-webmention {
+	margin: 1rem 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	label {
+		display: block;
+		margin-bottom: 0.5rem;
+		flex-basis: 100%;
+	}
+	input[name="source"] {
+		background: transparent;
+		color: inherit;
+		border: 1px solid #777;
+		padding: 0.5rem;
+		font-size: var(--font-size-h4);
+		flex: 1;
+	}
+	input[type="submit"] {
+		padding: 0.5rem;
+		font-size: var(--font-size-h4);
+		border: 1px solid #777;
+		background: transparent;
+		color: inherit;
+	}
+}
+
+// Webmention reactions styling
+ul.webmention-reactions {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	gap: 0.25rem;
+}

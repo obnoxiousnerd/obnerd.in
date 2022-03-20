@@ -1,6 +1,10 @@
-const blake3 = require("blake3");
+const dateToHuman = (date) =>
+	new Intl.DateTimeFormat("en-GB", {
+		year: "numeric",
+		month: "long",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+	}).format(new Date(date));
 
-module.exports = (length) => (thing) => {
-	const hasher = blake3.createHash();
-	return hasher.update(thing, "utf8").digest("base64url", { length });
-};
+module.exports = { dateToHuman };

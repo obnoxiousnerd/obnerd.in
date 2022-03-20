@@ -28,8 +28,10 @@
     "toml": "^3.0.0"
   },
   "devDependencies": {
+    "@11ty/eleventy-fetch": "^3.0.0",
     "dayjs": "^1.11.0",
-    "node-fetch": "^3.2.3",
+    "dotenv": "^16.0.0",
+    "node-fetch": "2",
     "prettier": "^2.6.0",
     "zx": "^6.0.6"
   }

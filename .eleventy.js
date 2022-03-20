@@ -5,7 +5,7 @@ const rss = require("@11ty/eleventy-plugin-rss");
 const shiki = require("markdown-it-shiki").default;
 const toc = require("eleventy-plugin-toc");
 
-const contentHash = require("./_11ty/filters");
+const { dateToHuman } = require("./_11ty/filters");
 
 /**
  *
@@ -59,14 +59,8 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(rss);
 
 	// Add filters
-	eleventyConfig.addFilter("dateToHuman", (date) =>
-		new Intl.DateTimeFormat("en-US", {
-			year: "numeric",
-			month: "long",
-			day: "2-digit",
-		}).format(new Date(date))
-	);
-	eleventyConfig.addFilter("contentHash", contentHash(4));
+	eleventyConfig.addFilter("dateToHuman", dateToHuman);
+	eleventyConfig.addFilter("absoluteUrl", rss.absoluteUrl);
 
 	return {
 		markdownTemplateEngine: "njk",

@@ -1,0 +1,31 @@
+<h2>Webmentions</h2>
+<section class="webmention webmention-reactions">
+    <p>
+        My site uses <a href="http://indieweb.org/webmention">Webmentions</a> via the 
+        <a href="https://indieweb.org">Indieweb</a>
+        and <a href="https://webmention.io">webmention.io</a> 
+        for likes, reposts, and replies/comments.
+    </p>
+    <form class="send-webmention" action="{{ site.webmentionUrl }}" method="post">
+        <label for="webmention-form-input">
+             URL of your webmention
+        </label>
+        <input 
+            id="webmention-form-input"
+            name="source" type="url" 
+            required placeholder="https://example.com/">
+        <input 
+            type="text"
+            name="target"
+            hidden value="{{ page.url | absoluteUrl(site.canonical) }}"
+        >
+        <input type="submit" value="Send webmention">
+    </form>
+    <details>
+        <summary>
+            Likes and reposts
+        </summary>
+        {% include "./webmention-reactions.njk" %}
+    </details>
+</section>
+<section class="webmention-replies"></section>

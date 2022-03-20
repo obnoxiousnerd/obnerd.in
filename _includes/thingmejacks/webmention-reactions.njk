@@ -1,0 +1,25 @@
+<ul class="webmention-reactions">
+    {% for mention in webmentions.children %}
+        {% if mention["wm-target"] == (page.url | absoluteUrl(site.canonical)) %}
+            {% if mention["wm-property"] == "like-of" or 
+                mention["wm-property"] == "repost-of" %}
+                <li class="webmention-reaction">
+                    {% if mention["wm-property"] == "like-of" %}
+                        {% set ariaDesc = "Liked by " + mention.author.name %}
+                    {% elif mention["wm-property"] == "repost-of" %}
+                        {% set ariaDesc = "Reposted by " + mention.author.name %}
+                    {% endif %}
+                    <a 
+                    aria-description="{{ ariaDesc }}"
+                    title="{{ ariaDesc }}"
+                    href="{{ mention.url }}">
+                        <img
+                        width="48" height="48" 
+                        src="{{ mention.author.photo }}"
+                        alt="Avatar of {{ mention.author.name }}">
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
