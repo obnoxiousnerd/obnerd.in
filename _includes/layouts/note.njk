@@ -17,13 +17,14 @@ eleventyComputed:
         </small>
     </header>
     <aside>
-        <span>
-            <i>
-                {% if url %}
+        {% if url %}
+            <small>
+                &#x21AA;
+                <i>
              Replying to <a class="u-in-reply-to" href="{{ url }}">{{ url }}</a>
-                {% endif %}
-            </i>
-        </span>
+                </i>
+            </small>
+        {% endif %}
     </aside>
     <div class="p-content">
         {{ content | safe }}
