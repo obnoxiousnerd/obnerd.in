@@ -15,6 +15,7 @@ footer {
       ul {
         padding: 0;
         display: flex;
+        flex-wrap: wrap;
         list-style: none;
         column-gap: 1.5rem;
         justify-content: flex-end;

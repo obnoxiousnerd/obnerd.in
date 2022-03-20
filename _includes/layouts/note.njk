@@ -5,6 +5,9 @@ eleventyComputed:
 ---
 
 <article class="note h-entry">
+    <header>
+        {% include "thingmejacks/h-card-mini.njk" %}
+    </header>
     <aside>
         {% if url %}
             <small>
@@ -18,7 +21,6 @@ eleventyComputed:
     <div class="p-content">
         {{ content | safe }}
     </div>
-    By {% include "thingmejacks/h-card-mini.njk" %}
     <br>
     <small>
         <data class="p-bridgy-omit-link" value="maybe"/>

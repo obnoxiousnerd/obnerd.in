@@ -1,0 +1,28 @@
+<ul class="webmention-reactions">
+    {% for mention in webmentions.children %}
+        {% if mention["wm-target"] == (page.url | absoluteUrl(site.canonical)) %}
+            {% if mention["wm-property"] == "in-reply-to" %}
+                <li class="webmention-reply">
+                    <article>
+                        <header>
+                            <a class="webmention-reply-author" href="{{ mention.author.url }}">
+                                <img height="48" width="48" src="{{ mention.author.photo }}" alt="Avatar of {{ mention.author.name }}">
+                            </a>
+                            <span>{{ mention.author.name }}</span>
+                            <br/>
+                            <small>
+                                <time datetime="{{ mention.published }}">
+                                    {{ mention.published | dateToHuman(true) }}
+                                </time>
+                            </small>
+                        </header>
+                        {{ mention.content.text }}
+                        <footer>
+                            <a href="{{ mention["wm-source"] }}">Source</a>
+                        </footer>
+                    </article>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
