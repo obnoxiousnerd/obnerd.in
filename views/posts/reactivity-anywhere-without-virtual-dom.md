@@ -1,5 +1,5 @@
 ---
-title: "Reactivity Anywhere Without Virtual Dom"
+title: 'Reactivity Anywhere Without Virtual Dom'
 description: "This little experiment gives variables 'superpowers' to be able to reflect their changes directly into the DOM."
 date: 2020-11-20
 tags: [javascript, html, webdev, reactivity]
@@ -27,7 +27,7 @@ To keep track of what goes here and there, we need some global variables to pres
 ```js
 const __refs__ = {};
 const __reactives__ = [];
-const __reactiveEl__ = document.querySelectorAll("[reactive]");
+const __reactiveEl__ = document.querySelectorAll('[reactive]');
 const reactive = (obj) => {
   /*Add logic*/
 };
@@ -112,7 +112,7 @@ const __updateDOM__ = (ref) => {
         let ref = reactive.dataset.ref;
         // Interacting with the DOM
         // Nullish coalescing, anybody?
-        reactive.textContent = __refs__[ref] ?? "";
+        reactive.textContent = __refs__[ref] ?? '';
       });
   }
   // UPDATE ALL!!
@@ -121,7 +121,7 @@ const __updateDOM__ = (ref) => {
       let ref = reactive.dataset.ref;
       // Interacting with the DOM
       // Nullish coalescing, anybody?
-      reactive.textContent = __refs__[ref] ?? "";
+      reactive.textContent = __refs__[ref] ?? '';
     });
 };
 ```
@@ -132,7 +132,7 @@ This can be wrapped as an IIFE (Immediately Invoked Function Expression) but I d
 
 ```js
 // Get live elements
-const __reactiveEl__ = document.querySelectorAll("[reactive]");
+const __reactiveEl__ = document.querySelectorAll('[reactive]');
 __reactiveEl__.forEach((el) => {
   // Match the `count` between <h1 reactive>${count}</h1>
   const refs = el.innerHTML.match(/\${([^}]+)}/g);
@@ -140,7 +140,7 @@ __reactiveEl__.forEach((el) => {
   if (refs) {
     refs.forEach((ref) => {
       // extract it
-      const dataRef = ref.split("{")[1].split("}")[0].trim();
+      const dataRef = ref.split('{')[1].split('}')[0].trim();
       // insert a special span element with the element
       // and store the key name in the `data-ref` attribute
       el.innerHTML = el.innerHTML.replace(
@@ -149,7 +149,7 @@ __reactiveEl__.forEach((el) => {
       );
     });
     // Push the span element in __reactives__
-    __reactives__.push(...el.querySelectorAll("span.reactivity-anywhere"));
+    __reactives__.push(...el.querySelectorAll('span.reactivity-anywhere'));
   }
 });
 // Initialize all the magic!!
@@ -171,9 +171,9 @@ const parseDefaultRefValue = (el) => {
     // If the passed key is a function, run it
     // and store the value
     // I'm sorry, but we need to use eval here
-    parsed = eval(`(${el.getAttribute("ref-default")})()`);
+    parsed = eval(`(${el.getAttribute('ref-default')})()`);
   } catch (e) {
-    parsed = el.getAttribute("ref-default");
+    parsed = el.getAttribute('ref-default');
   }
   return parsed;
 };
@@ -186,26 +186,26 @@ const assignDefaultRefsToInputs = (el, ref) => {
 // The `ref-default` contains the default value for the `ref`
 // eg.
 // <textarea ref="name"></textarea>
-document.querySelectorAll("input[ref], textarea[ref]").forEach((el) => {
+document.querySelectorAll('input[ref], textarea[ref]').forEach((el) => {
   // Keep a ref to the ref!! Because we don't want to
   // lose it in event listeners
-  const ref = el.getAttribute("ref");
+  const ref = el.getAttribute('ref');
   if (ref) {
     // lazily update default values
-    window.addEventListener("load", () => assignDefaultRefsToInputs(el, ref));
-    el.addEventListener("input", () => {
+    window.addEventListener('load', () => assignDefaultRefsToInputs(el, ref));
+    el.addEventListener('input', () => {
       // again, a dumb reference to the ref
       const elRef = ref;
       // preserve default value
       const defaultVal = parseDefaultRefValue(el);
       // Set whatever value is typed as the ref value
       // else, the default value
-      __refs__[elRef] = el.value !== "" ? el.value : defaultVal;
+      __refs__[elRef] = el.value !== '' ? el.value : defaultVal;
       if (__refs__[elRef] !== defaultVal) {
         // Keep rest of the input/textarea elements in sync
-        Array.from(document.querySelectorAll("input[ref], textarea[ref]"))
+        Array.from(document.querySelectorAll('input[ref], textarea[ref]'))
           // Find input/textareas with same refs
-          .filter((el) => el.getAttribute("ref") === elRef)
+          .filter((el) => el.getAttribute('ref') === elRef)
           // Keep their value in sync
           .forEach((el) => (el.value = __refs__[elRef]));
       }

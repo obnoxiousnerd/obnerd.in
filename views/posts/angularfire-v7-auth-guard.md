@@ -1,5 +1,5 @@
 ---
-title: "Angularfire V7 Auth Guard"
+title: 'Angularfire V7 Auth Guard'
 date: 2021-06-08
 tags:
   - snippets
@@ -12,19 +12,19 @@ As of now, the AngularFire v7(**"Beta"**) does not have an implementation for an
 Here's the code:
 
 ```ts
-import { Injectable } from "@angular/core";
-import { Auth } from "@angular/fire";
-import { authState } from "@angular/fire/auth";
+import { Injectable } from '@angular/core';
+import { Auth } from '@angular/fire';
+import { authState } from '@angular/fire/auth';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
   RouterStateSnapshot,
   UrlTree,
-} from "@angular/router";
-import { User } from "@firebase/auth";
-import { Observable, of, pipe, UnaryFunction } from "rxjs";
-import { map, switchMap, take } from "rxjs/operators";
+} from '@angular/router';
+import { User } from '@firebase/auth';
+import { Observable, of, pipe, UnaryFunction } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 
 export type AuthPipeGenerator = (
   next: ActivatedRouteSnapshot,
@@ -42,7 +42,7 @@ export const loggedIn: AuthPipe = map((user) => !!user);
  * Check out the v6 implementation here: https://git.io/JZOcy
  */
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
   constructor(private auth: Auth, private router: Router) {}
@@ -60,7 +60,7 @@ export class AuthGuard implements CanActivate {
       take(1),
       authPipeFactory(route, state),
       map((can) => {
-        if (typeof can === "boolean") {
+        if (typeof can === 'boolean') {
           return can;
         } else if (Array.isArray(can)) {
           return this.router.createUrlTree(can);

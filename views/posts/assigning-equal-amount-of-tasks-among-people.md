@@ -1,6 +1,6 @@
 ---
-title: "Assigning equal amount of tasks among people"
-description: "Post about some code that assigns m number of tasks to n people, considering that everyone gets equal amount of tasks."
+title: 'Assigning equal amount of tasks among people'
+description: 'Post about some code that assigns m number of tasks to n people, considering that everyone gets equal amount of tasks.'
 date: 2022-02-26
 tags:
   - snippets

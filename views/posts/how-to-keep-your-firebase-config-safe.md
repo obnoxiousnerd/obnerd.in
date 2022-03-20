@@ -1,6 +1,6 @@
 ---
-title: "How to Keep Your Firebase Project Safe and Secure from everyone"
-description: "This post discusses some steps to keep a Firebase project safe and secure."
+title: 'How to Keep Your Firebase Project Safe and Secure from everyone'
+description: 'This post discusses some steps to keep a Firebase project safe and secure.'
 date: 2020-12-18
 tags: [firebase, security, webdev, opensource]
 ---

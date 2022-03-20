@@ -1,7 +1,7 @@
-import fs from "fs/promises";
-import fetch from "node-fetch";
+import fs from 'fs/promises';
+import fetch from 'node-fetch';
 
-const themes = ["ayu-dark", "ayu-light"];
+const themes = ['ayu-dark', 'ayu-light'];
 
 themes.forEach(async (theme) => {
   const response = await fetch(`

@@ -21,8 +21,8 @@
   --font-size-small: 0.8rem;
 
   --blockquote-border: 0.3rem solid #666;
-  --font-family: "Roboto Slab", sans-serif;
-  --code-font-family: "Victor Mono", monospace;
+  --font-family: 'Roboto Slab', sans-serif;
+  --code-font-family: 'Victor Mono', monospace;
   --border-radius-generic: 5px;
 }
 
@@ -64,7 +64,7 @@
   padding: 0;
   li:not(:last-child)::after {
     display: inline;
-    content: "|";
+    content: '|';
     margin: 0 1ch;
   }
 }

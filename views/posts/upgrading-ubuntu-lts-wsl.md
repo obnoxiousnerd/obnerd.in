@@ -1,6 +1,6 @@
 ---
-title: "Upgrading your Ubuntu LTS distro in WSL"
-description: "A short guide + notes for upgrading your WSL Ubuntu LTS distro"
+title: 'Upgrading your Ubuntu LTS distro in WSL'
+description: 'A short guide + notes for upgrading your WSL Ubuntu LTS distro'
 date: 2022-01-20
 tags:
   - wsl

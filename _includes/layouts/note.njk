@@ -6,7 +6,10 @@ eleventyComputed:
 
 <article class="note h-entry">
     <header>
-        {% include "thingmejacks/h-card-mini.njk" %}
+        <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
+            {{ date | dateToHuman }}</time>
+        <span class="seperator">&centerdot;</span>
+       By {% include "thingmejacks/h-card-mini.njk" %}
     </header>
     <aside>
         {% if url %}

@@ -1,6 +1,6 @@
 ---
-title: "One Liner for rimraf that gets the job done"
-description: "Oneliner to replace rimraf and delete folders/files in a cross-platform way."
+title: 'One Liner for rimraf that gets the job done'
+description: 'Oneliner to replace rimraf and delete folders/files in a cross-platform way.'
 date: 2021-07-10
 tags:
   - snippets

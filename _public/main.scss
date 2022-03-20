@@ -1,28 +1,28 @@
-@use "./variables.scss" as v;
-@use "./navbar.scss";
-@use "./footer.scss";
-@use "./markdown.scss";
-@use "./webmentions.scss";
+@use './variables.scss' as v;
+@use './navbar.scss';
+@use './footer.scss';
+@use './markdown.scss';
+@use './webmentions.scss';
 
 // Fonts
 @font-face {
-  font-family: "Victor Mono";
+  font-family: 'Victor Mono';
   font-style: normal;
   font-weight: 400;
   font-display: optional;
-  src: local("Victor Mono Medium"), local("VictorMono-Medium"),
-    local("Victor Mono"), local("VictorMono"),
-    url("./fonts/victor-mono-latin.woff2") format("woff2");
+  src: local('Victor Mono Medium'), local('VictorMono-Medium'),
+    local('Victor Mono'), local('VictorMono'),
+    url('./fonts/victor-mono-latin.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Roboto Slab";
+  font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 400;
   font-display: optional;
-  src: local("Roboto Slab"), local("RobotoSlab"),
-    url("./fonts/roboto-slab-latin-variable-wghtOnly-normal.woff2")
-      format("woff2");
+  src: local('Roboto Slab'), local('RobotoSlab'),
+    url('./fonts/roboto-slab-latin-variable-wghtOnly-normal.woff2')
+      format('woff2');
 }
 
 @media (prefers-color-scheme: dark) {
