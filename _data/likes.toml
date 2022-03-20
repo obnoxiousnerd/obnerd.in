@@ -1,5 +1,0 @@
-likes = [
-    { url = "https://daily-dev-tips.com/posts/8-google-analytics-privacy-focussed-alternatives/", date = 2022-03-18T00:00:00Z },
-    { url = "https://sia.codes/posts/webmentions-eleventy-in-depth/", date = 2022-03-18T03:45:00Z },
-    { url = "https://webmention.io/", date = 2022-03-18T03:45:00Z }
-]

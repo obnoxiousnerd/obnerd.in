@@ -1,0 +1,18 @@
+---
+layout: main
+eleventyComputed:
+    title: "Like of {{ url }}"
+---
+<article class="h-entry">
+    <header>
+        By {% include "thingmejacks/h-card-mini.njk" %}
+    </header>
+    <p class="e-content">
+        I liked <a class="u-like-of" href="{{ url }}">{{ url }}</a> 
+        on <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
+            {{ date | dateToHuman }}</time>
+        <small>
+            <a class="u-url" href="{{ page.url }}">permalink</a>
+        </small>
+    </p>
+</article>

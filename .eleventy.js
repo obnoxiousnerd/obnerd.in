@@ -24,12 +24,16 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addCollection("notes", (collection) => {
 		return collection.getFilteredByGlob("views/notes/*.md");
 	});
+	eleventyConfig.addCollection("likes", (collection) => {
+		return collection.getFilteredByGlob("views/likes/*.md");
+	});
 
 	eleventyConfig.addCollection("content", (collection) => {
-		return [
-			...collection.getFilteredByTag("likes"),
-			...collection.getFilteredByGlob(["views/notes/*.md", "views/posts/*.md"]),
-		];
+		return collection.getFilteredByGlob([
+			"views/notes/*.md",
+			"views/posts/*.md",
+			"views/likes/*.md",
+		]);
 	});
 
 	eleventyConfig.setDataDeepMerge(true);
