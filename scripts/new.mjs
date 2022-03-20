@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { $ } from "zx";
+import dayjs from "dayjs";
 import crypto from "crypto";
 import fs from "fs/promises";
 
@@ -17,14 +18,23 @@ ${url && `url: ${url}\n`}date: ${ts}
 `;
 
 const randomFilename = () => {
-	return `${crypto.randomBytes(3).toString("hex")}.md`;
+	return `${crypto.randomBytes(3).toString("hex")}`;
 };
 
+const ts = new Date();
+let content = NOTE_LIKE_TMPL(url, ts.toISOString());
+
 switch (type) {
-	case "note":
+	case "note": {
+		await fs.writeFile(
+			`views/notes/${dayjs(ts).format("YYYY-MM-DD-HH-mm")}.md`,
+			content
+		);
+	}
 	case "like":
-		const ts = new Date();
-		const content = NOTE_LIKE_TMPL(url, ts.toISOString());
-		await fs.writeFile(`views/${type}s/${randomFilename()}`, content);
+		await fs.writeFile(`views/likes/${randomFilename()}.md`, content);
 		break;
+	default:
+		console.error("¯\\_(ツ)_/¯");
+		process.exit(1);
 }
