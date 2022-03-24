@@ -1,6 +1,7 @@
 ---
 title: 'Assigning equal amount of tasks among people'
-description: 'Post about some code that assigns m number of tasks to n people, considering that everyone gets equal amount of tasks.'
+description: 'Post about some code that assigns m number of tasks to n people,
+  considering that everyone gets equal amount of tasks.'
 date: 2022-02-26
 tags:
   - snippets
@@ -9,17 +10,28 @@ tags:
 
 # Context
 
-So I had this edge-case scenario where I was to assign tasks among the four of us for a video project. We had initially decided to take the tasks numerically, but then I thought, "let's make this randomized". The tasks were equally dividable, and my team members gave in, ergo I created this little script to do the work.
+So I had this edge-case scenario where I was to assign tasks among the four of
+us for a video project. We had initially decided to take the tasks numerically,
+but then I thought, "let's make this randomized". The tasks were equally
+dividable, and my team members gave in, ergo I created this little script to do
+the work.
 
 # Finding the right thing to do the job
 
-Obviously, TypeScript is the first option to do this, but the interface for random numbers isn't the most pleasing one for this situation. There's also shell scripts (`fish` is my pick), but I never dealt with random numbers in the command line. So then its Python which will be used to do the job.
+Obviously, TypeScript is the first option to do this, but the interface for
+random numbers isn't the most pleasing one for this situation. There's also
+shell scripts (`fish` is my pick), but I never dealt with random numbers in the
+command line. So then its Python which will be used to do the job.
 
 ## `random.shuffle()`
 
-Checking [this question on StackOverflow](https://stackoverflow.com/a/473983), there was a function in the `random` module of Python to shuffle the lists _in place_. Phew. I thought I was going to write a bunch of more stuff for shuffling the lists and stuff 😅
+Checking [this question on StackOverflow](https://stackoverflow.com/a/473983),
+there was a function in the `random` module of Python to shuffle the lists _in
+place_. Phew. I thought I was going to write a bunch of more stuff for shuffling
+the lists and stuff 😅
 
-So the plan was clear, use this function and build code around it and get the job done.
+So the plan was clear, use this function and build code around it and get the
+job done.
 
 # The script
 
@@ -59,8 +71,11 @@ for i in range(int(task_per_person)):
 
 ## On what would it won't work?
 
-This won't work when the tasks are not equally assignable. For instance. 8 tasks among 4 people is possible, but 7 tasks among 3 isn't. I'll probably write code for this too in the future.
+This won't work when the tasks are not equally assignable. For instance. 8 tasks
+among 4 people is possible, but 7 tasks among 3 isn't. I'll probably write code
+for this too in the future.
 
 ---
 
-<small>The names in the snippet are a reference to an Ed Sheeran's song. Check if you can find out ;)</small>
+<small>The names in the snippet are a reference to an Ed Sheeran's song. Check
+if you can find out ;)</small>

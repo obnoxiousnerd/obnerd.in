@@ -7,11 +7,22 @@ tags: [javascript, html, webdev, reactivity]
 
 # How did this got into my mind??
 
-Virtual DOM can be referenced as the thing which just "introduced" me to the title of this post. What if we keep aside all that diffing, state stuff, and focus on one thing: reactivity between the JavaScript and the DOM. Well, most of us are using libraries just to achieve this reactivity in our apps. But most of them implement a virtual DOM which keeps track of all the tags, states, variables, objects, and whatnot and then syncs them with the real DOM. As said, things might get a little crazy doing all this stuff. So I just decided, why not just implement a crude example of all this "virtual DOM" thing without virtual DOM. Is this even achievable?? The answer is (0.5 \* yes)!! For the sake of this post, let us call it "Reactivity Anywhere."
+Virtual DOM can be referenced as the thing which just "introduced" me to the
+title of this post. What if we keep aside all that diffing, state stuff, and
+focus on one thing: reactivity between the JavaScript and the DOM. Well, most of
+us are using libraries just to achieve this reactivity in our apps. But most of
+them implement a virtual DOM which keeps track of all the tags, states,
+variables, objects, and whatnot and then syncs them with the real DOM. As said,
+things might get a little crazy doing all this stuff. So I just decided, why not
+just implement a crude example of all this "virtual DOM" thing without virtual
+DOM. Is this even achievable?? The answer is (0.5 \* yes)!! For the sake of this
+post, let us call it "Reactivity Anywhere."
 
 # Disclaimer
 
-This post might have things that seem vague and senseless. Also don't take things too seriously here, take them as just a thought. Reader discretion is advised.
+This post might have things that seem vague and senseless. Also don't take
+things too seriously here, take them as just a thought. Reader discretion is
+advised.
 
 # Let's Start!!
 
@@ -22,7 +33,8 @@ This post might have things that seem vague and senseless. Also don't take thing
 
 # Defining the global variables(precisely, stores)
 
-To keep track of what goes here and there, we need some global variables to preserve and mutate all the states.
+To keep track of what goes here and there, we need some global variables to
+preserve and mutate all the states.
 
 ```js
 const __refs__ = {};
@@ -36,20 +48,28 @@ const __updateDOM__ = (ref) => {
 };
 ```
 
-This is just everything we need for the logic. The variables whose names start and end with double underscores are [internals](https://github.com/facebook/react/blob/3ebf05183dfcb8eadfc41a9e19559d835fd9b77e/packages/react/index.js#L71).
-We will only store two things: references to the elements, and, of course, the reactive variables.
+This is just everything we need for the logic. The variables whose names start
+and end with double underscores are
+[internals](https://github.com/facebook/react/blob/3ebf05183dfcb8eadfc41a9e19559d835fd9b77e/packages/react/index.js#L71).
+We will only store two things: references to the elements, and, of course, the
+reactive variables.
 
 ## But this seems like virtual DOM!!!
 
 But I'm sorry, this is not the virtual DOM you think:
 
-- We will not be diffing the whole element tree for every single change; only and only the affected element will be mutated (less carbon dioxide)
+- We will not be diffing the whole element tree for every single change; only
+  and only the affected element will be mutated (less carbon dioxide)
 
 # Determining `reactive` elements
 
-To keep specificity and refrain from scanning the whole DOM, we will just handpick special elements that work with our module. So, any element that has the `reactive` attribute (`<element reactive></element>`), will only be able to use the special reactive powers.
+To keep specificity and refrain from scanning the whole DOM, we will just
+handpick special elements that work with our module. So, any element that has
+the `reactive` attribute (`<element reactive></element>`), will only be able to
+use the special reactive powers.
 
-To access the reactive elements from the store, we will use the ES6 string interpolation syntax. So, to access the `count`, we will write
+To access the reactive elements from the store, we will use the ES6 string
+interpolation syntax. So, to access the `count`, we will write
 
 ```html
 <h1 reactive>The time is ${count}</h1>
@@ -65,12 +85,12 @@ This is just an array containing live references of the DOM Elements.
 
 # The `reactive()`
 
-This function is basically a store where you'd be storing all the reactive stuff.
-The definition of the function is surprisingly simple:
+This function is basically a store where you'd be storing all the reactive
+stuff. The definition of the function is surprisingly simple:
 
 ```js
 const reactive = (obj) => {
-  //Loop through the string
+  // Loop through the string
   Object.keys(obj).forEach((key) => {
     // defineProperty, anyone??
     // We want to maintain reactivity, so we are using custom
@@ -98,7 +118,10 @@ const reactive = (obj) => {
 
 # The `__updateDOM__()`
 
-This is the [Rosetta](<https://en.wikipedia.org/wiki/Rosetta_(software)#:~:text=Rosetta%20is%20a%20dynamic%20binary%20translator%20developed,application%20compatibility%20layer%20between%20different%20CPU%20architectures>) for the `reactive` DOM Elements and the `__refs__`. This function is also relative simple in its definition:
+This is the
+[Rosetta](<https://en.wikipedia.org/wiki/Rosetta_(software)#:~:text=Rosetta%20is%20a%20dynamic%20binary%20translator%20developed,application%20compatibility%20layer%20between%20different%20CPU%20architectures>)
+for the `reactive` DOM Elements and the `__refs__`. This function is also
+relative simple in its definition:
 
 ```js
 // Ref can be any key from the __refs__ store
@@ -128,7 +151,8 @@ const __updateDOM__ = (ref) => {
 
 # Finding all the reactive variables and bootstrapping them
 
-This can be wrapped as an IIFE (Immediately Invoked Function Expression) but I don't consider doing it for the sake of simplicity. So, here we go!!
+This can be wrapped as an IIFE (Immediately Invoked Function Expression) but I
+don't consider doing it for the sake of simplicity. So, here we go!!
 
 ```js
 // Get live elements
@@ -162,7 +186,8 @@ Of course, we need this if user input is needed for our code to run.
 
 The supercharged textareas and input elements will bear the `ref` attribute
 
-A lot of things, harsh things are going to be done in this section, so brace yourself and hold on tight.
+A lot of things, harsh things are going to be done in this section, so brace
+yourself and hold on tight.
 
 ```js
 const parseDefaultRefValue = (el) => {
@@ -216,23 +241,29 @@ document.querySelectorAll('input[ref], textarea[ref]').forEach((el) => {
 
 # We're almost done!
 
-Now the only thing that remains is to write some HTML to check whether everything works!
-So, here we go!!
-Some more things to note here:
+Now the only thing that remains is to write some HTML to check whether
+everything works! So, here we go!! Some more things to note here:
 
-- You can use multiple stores!! However, if you redeclare a key in the latter store, it will take precedence, not the first one
+- You can use multiple stores!! However, if you redeclare a key in the latter
+  store, it will take precedence, not the first one
 
 <!-- <Codepen slug="wvWbNqo" title="Reactivity Anywhere!!" result="result" height="500"/> -->
 
 # Why something like this would be great to use (according to me)
 
-- It will allow HTML to do its work and JS to do its own. It's not like "All HTML!" or "All JS!" but harmony between the two (not to mention CSS here) that will appreciate the job these languages have to do.
-- Minimal overhead. As I said earlier, no virtual DOM, only real DOM (credits to [Svelte](https://svelte.dev)) with some objects in memory
+- It will allow HTML to do its work and JS to do its own. It's not like "All
+  HTML!" or "All JS!" but harmony between the two (not to mention CSS here) that
+  will appreciate the job these languages have to do.
+- Minimal overhead. As I said earlier, no virtual DOM, only real DOM (credits to
+  [Svelte](https://svelte.dev)) with some objects in memory
 
 # Limitations
 
-You're going to think over this :) because this is just a crude implementation of an idea. So, feel free to critically think over it.
+You're going to think over this :) because this is just a crude implementation
+of an idea. So, feel free to critically think over it.
 
 # Ending notes
 
-If you seem to be interested in creating some sort of framework with this, you're ready to go (some frameworks, using this idea, might even exist)! I'd also be happy to help you! Thank you for bearing with me in such a long post!
+If you seem to be interested in creating some sort of framework with this,
+you're ready to go (some frameworks, using this idea, might even exist)! I'd
+also be happy to help you! Thank you for bearing with me in such a long post!

@@ -5,7 +5,9 @@ tags:
   - snippets
 ---
 
-As of now, the AngularFire v7(**"Beta"**) does not have an implementation for an auth guard(which I really need), so I went ahead, copied the original auth guard code (from v6), and refactored it to make it compatible with v7.
+As of now, the AngularFire v7(**"Beta"**) does not have an implementation for an
+auth guard(which I really need), so I went ahead, copied the original auth guard
+code (from v6), and refactored it to make it compatible with v7.
 
 **This code works on Angular 12. I haven't tested it for older versions, but it should work.**
 
@@ -110,5 +112,3 @@ export const redirectLoggedInTo: (redirect: string | any[]) => AuthPipe = (
     map((loggedIn) => (loggedIn && redirect) || true)
   );
 ```
-
-<sup></sub>Note: If you are an contributor of the Angularfire library, you can steal this code and cram it in the library. Just keep a link to this article ;)</sup></sub>

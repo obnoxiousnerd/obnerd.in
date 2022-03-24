@@ -6,7 +6,9 @@ tags:
   - snippets
 ---
 
-I have been striving to cut down on node_modules. Most of the times, I need rimraf to delete a folder (usually `public`/`dist`/`build`) and to keep the project cross platform. So, here is a one-liner to delete a folder/file:
+I have been striving to cut down on node_modules. Most of the times, I need
+rimraf to delete a folder (usually `public`/`dist`/`build`) and to keep the
+project cross platform. So, here is a one-liner to delete a folder/file:
 
 ```shell
 node -e "require('fs').rmSync('PATH',{recursive:true,force:true})"

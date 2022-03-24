@@ -106,7 +106,8 @@ which has a list of dependencies required for Playwright to function. Immediatel
 
 ## Installing dependencies, the DIY way
 
-If we run playwright without the dependencies installed, we will get something like this:
+If we run playwright without the dependencies installed, we will get something
+like this:
 
 ```
 ╔════════════════════════════════════════════════════════════╗
@@ -125,15 +126,20 @@ So I hacked up a little Deno script to fetch the dependencies:
 deno eval "import {deps} from 'https://raw.githubusercontent.com/microsoft/playwright/main/packages/playwright-core/src/utils/nativeDeps.ts'; console.log(deps['ubuntu20.04']['chromium'].join('\n'));"
 ```
 
-<small>Cheeky enough, I know 😉. By the way, Deno is used because the source is a TypeScript file, and I wouldn't like to install several dozen packages on Node just to get the dependencies list.</small>
+<small>Cheeky enough, I know 😉. By the way, Deno is used because the source is
+a TypeScript file, and I wouldn't like to install several dozen packages on Node
+just to get the dependencies list.</small>
 
-And tried installing that in the container but apt decided to greet me with an error message:
+And tried installing that in the container but apt decided to greet me with an
+error message:
 
 ```
 E: Unable to locate package <all-the-package-names-seperated-by-a-space>
 ```
 
-Realising how naïve this was, I tried to look up for solutions to this. One [solution that particularly stood out](https://unix.stackexchange.com/a/212214) was somewhat like this:
+Realising how naïve this was, I tried to look up for solutions to this. One
+[solution that particularly stood out](https://unix.stackexchange.com/a/212214)
+was somewhat like this:
 
 1. Store the list of dependencies in a file, one item on a line.
 2. Using `xargs` to pass the arguments to apt
@@ -146,7 +152,8 @@ buildah copy $id /tmp/deps.txt /tmp
 buildah run $id -- xargs -a /tmp/deps.txt apt install -y
 ```
 
-Which gets those packages installed, claiming ~117 MB of space in the process (not to shabby, at least better than the previous 319 MB).
+Which gets those packages installed, claiming ~117 MB of space in the process
+(not to shabby, at least better than the previous 319 MB).
 
 ## The tzdata prompt problem
 
@@ -172,19 +179,26 @@ the time zones in which they are located.
 Geographic area:
 ```
 
-This was really a disappointment since building container image is supposed to be an automated process. [Looking up a solution](https://serverfault.com/a/992421) for this on the Web, I found out that if I set the `DEBIAN_FRONTEND` environment variable to `noninteractive`, I can stop the prompt from appearing. But I still need a time zone somehow! There was another solution for it:
+This was really a disappointment since building container image is supposed to
+be an automated process. [Looking up a
+solution](https://serverfault.com/a/992421) for this on the Web, I found out
+that if I set the `DEBIAN_FRONTEND` environment variable to `noninteractive`, I
+can stop the prompt from appearing. But I still need a time zone somehow! There
+was another solution for it:
 
 ```
 buildah config --env TZ=Asia/Kolkata $id
 buildah run $id -- ln -snf /usr/share/zoneinfo/\$TZ /etc/localtime
 ```
 
-<small>Notice the \$TZ. The \$ was to prevent the TZ env from the host to creep in</small>
-Running this, gets the job done. No more tzdata prompt in the middle of an installation, yay!
+<small>Notice the \$TZ. The \$ was to prevent the TZ env from the host to creep
+in</small> Running this, gets the job done. No more tzdata prompt in the middle
+of an installation, yay!
 
 # Setting up the image's public interface
 
-The first step was to change the working directory, since the app is being copied to `/app`.
+The first step was to change the working directory, since the app is being
+copied to `/app`.
 
 ```
 buildah config --entrypoint '["/app/cli"]' $id
@@ -199,7 +213,9 @@ buildah rm $id
 
 # Building the image
 
-After this, I thought the thing was done. So I start the process of building the image and leave the machine alone for some time. After the build was done, I tried to run the image just to see that everything is working.
+After this, I thought the thing was done. So I start the process of building the
+image and leave the machine alone for some time. After the build was done, I
+tried to run the image just to see that everything is working.
 
 ```
 podman run -it --rm localhost/rep
@@ -214,17 +230,20 @@ Try 'cli --help' for help.
 Error: No such command 'bash'.
 ```
 
-But I didn't pass bash as a parameter! However, digging in the logs, I see a line:
+But I didn't pass bash as a parameter! However, digging in the logs, I see a
+line:
 
 ```
 WARN[0000] cmd "bash" exists and will be passed to entrypoint as a parameter
 ```
 
-Some more "looking up" and I get to know that I have not set the `cmd` key in the image config[1]. So I had two attempts to fix it:
+Some more "looking up" and I get to know that I have not set the `cmd` key in
+the image config[1]. So I had two attempts to fix it:
 
 1. `buildah config --cmd "" $id`
-2. `buildah config --cmd '[""]' $id`
-   But they didn't work. I, getting bonkers about not getting a solution, ran `buildah config --cmd '[]' $id` and it worked! There was no "bash" being passed as a parameter!
+2. `buildah config --cmd '[""]' $id` But they didn't work. I, getting bonkers
+   about not getting a solution, ran `buildah config --cmd '[]' $id` and it
+   worked! There was no "bash" being passed as a parameter!
 
 ## Running the image
 
@@ -238,37 +257,59 @@ And it worked flawlessly. I was happy.
 
 ## Size of the image
 
-I also took a look at the image size just to see if our efforts have made any significant effect. So running `podman image ls` gives:
+I also took a look at the image size just to see if our efforts have made any
+significant effect. So running `podman image ls` gives:
 
 ```
 REPOSITORY                 TAG         IMAGE ID      CREATED            SIZE
 localhost/rep              latest      4c129f4360a0  About an hour ago  494 MB
 ```
 
-494 MB. Still OK. ~~Could have easily been in the range of 1GB if I would install Python to install the dependencies.~~ I did that too, here are some rough figures:
+494 MB. Still OK. ~~Could have easily been in the range of 1GB if I would
+install Python to install the dependencies.~~ I did that too, here are some
+rough figures:
 
 - With Python and pip: 1.1 GB
-- With Python and pip, but deleted them afterwards plus ran `apt autoremove`: ~580 MB
+- With Python and pip, but deleted them afterwards plus ran `apt autoremove`:
+  ~580 MB
 
 # Getting attracted to Alpine, again
 
 **SPOILER: BAD IDEA AGAIN! :(**
 
-As I am writing this post, another idea pops up: what if, we bundle the app into an AppImage bundle, and pop it inside an Alpine container? After all, AppImage bundles, if done correctly, can run anywhere, even in the scratch container. Also we could save more storage space. The Ubuntu image still has lots of things that are of no use to my app and we could, in theory, cut on a lot of bloat.
-The general process could be:
+As I am writing this post, another idea pops up: what if, we bundle the app into
+an AppImage bundle, and pop it inside an Alpine container? After all, AppImage
+bundles, if done correctly, can run anywhere, even in the scratch container.
+Also we could save more storage space. The Ubuntu image still has lots of things
+that are of no use to my app and we could, in theory, cut on a lot of bloat. The
+general process could be:
 
-1. Figure out the shared libraries of the app and the Playwright-supplied Chromium binary.
+1. Figure out the shared libraries of the app and the Playwright-supplied
+   Chromium binary.
 2. Create an AppImage.
-3. Pop it in the `scratch`/`alpine` image
-   ~~Could be a very nice plan to do, but not now, its for another day!~~ Figured out the shared libraries using `ldd`, I made an AppImage, tried to run it on my host machine, but it failed to generate the PDFs. Maybe the Chromium binary was missing a library or two, who knows.
-   Later I found a Docker image for [running Chrome in Alpine](https://hub.docker.com/r/zenika/alpine-chrome) and thought of trying it out. But first, I checked the image size, it was 282.18 MB compressed. If I consider the compression ratio to be about as half, that, plus, my binary, the total storage space would be well over the current image size. Not worth the effort.
+3. Pop it in the `scratch`/`alpine` image ~~Could be a very nice plan to do, but
+   not now, its for another day!~~ Figured out the shared libraries using `ldd`,
+   I made an AppImage, tried to run it on my host machine, but it failed to
+   generate the PDFs. Maybe the Chromium binary was missing a library or two,
+   who knows. Later I found a Docker image for [running Chrome in
+   Alpine](https://hub.docker.com/r/zenika/alpine-chrome) and thought of trying
+   it out. But first, I checked the image size, it was 282.18 MB compressed. If
+   I consider the compression ratio to be about as half, that, plus, my binary,
+   the total storage space would be well over the current image size. Not worth
+   the effort.
 
 # Ending Words
 
-This was really my first time making an image, and it was a fun adventure, span over the course of a week.
+This was really my first time making an image, and it was a fun adventure, span
+over the course of a week.
 
-If you are interested about this project, [check it out here](https://github.com/retronav/rep).
+If you are interested about this project,
+[check it out here](https://github.com/retronav/rep).
 
-Also, here's a [direct link](https://github.com/retronav/rep/blob/main/scripts/build-image.fish) to the script that makes the container image.
+Also, here's a
+[direct link](https://github.com/retronav/rep/blob/main/scripts/build-image.fish)
+to the script that makes the container image.
 
-[1]: ( https://www.mankier.com/1/buildah-config#--cmd ) Always read your man pages when in doubt. It helps. If it doesn't, then you might need to look up elsewhere.
+[1]: ( https://www.mankier.com/1/buildah-config#--cmd ) Always read your man
+pages when in doubt. It helps. If it doesn't, then you might need to look up
+elsewhere.
