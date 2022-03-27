@@ -7,4 +7,4 @@ ingredients that make something wonderful.
 
 ## This is me
 
-{% include "thingmejacks/h-card.njk" %}
+{% include "thingmajigs/h-card.njk" %}

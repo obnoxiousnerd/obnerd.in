@@ -8,7 +8,7 @@ layout: main
       {{ date | dateToHuman }}
     </time>
     <span class="seperator">&centerdot;</span>
-    <span>By</span>{% include "thingmejacks/h-card-mini.njk" %}
+    <span>By</span>{% include "thingmajigs/h-card-mini.njk" %}
   </header>
   <aside>
     {{ content | toc | safe }}
@@ -19,6 +19,6 @@ layout: main
   </div>
   <footer>
     <hr>
-    {% include "../thingmejacks/webmentions.njk" %}
+    {% include "../thingmajigs/webmentions.njk" %}
   </footer>
 </article>
