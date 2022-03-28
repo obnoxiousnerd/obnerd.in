@@ -16,6 +16,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     _assets: '.',
     '_public/fonts': 'fonts/',
+    'node_modules/@fontsource/cabin/files/cabin-latin-variable-wghtOnly-normal.woff2':
+      'fonts/cabin-latin-variable-wghtOnly-normal.woff2',
   });
 
   // Set watch targets
