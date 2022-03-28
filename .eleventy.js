@@ -13,7 +13,10 @@ const { dateToHuman } = require('./_11ty/filters');
  */
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
-  eleventyConfig.addPassthroughCopy({ _assets: '.' });
+  eleventyConfig.addPassthroughCopy({
+    _assets: '.',
+    '_public/fonts': 'fonts/',
+  });
 
   // Set watch targets
   eleventyConfig.addWatchTarget('./_public');

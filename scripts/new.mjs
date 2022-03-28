@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { $ } from 'zx';
 import dayjs from 'dayjs';
 import crypto from 'crypto';
 import fs from 'fs/promises';
