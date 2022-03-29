@@ -18,7 +18,6 @@ I used:
   use.
 - `buildah`: Used for making the container image.
 - All scripts written in [`fish`](https://fishshell.com) unless specified.
--
 
 # First steps
 
@@ -238,7 +237,7 @@ WARN[0000] cmd "bash" exists and will be passed to entrypoint as a parameter
 ```
 
 Some more "looking up" and I get to know that I have not set the `cmd` key in
-the image config[1]. So I had two attempts to fix it:
+the image config[^1]. So I had two attempts to fix it:
 
 1. `buildah config --cmd "" $id`
 2. `buildah config --cmd '[""]' $id` But they didn't work. I, getting bonkers
@@ -310,6 +309,7 @@ Also, here's a
 [direct link](https://github.com/retronav/rep/blob/main/scripts/build-image.fish)
 to the script that makes the container image.
 
-[1]: ( https://www.mankier.com/1/buildah-config#--cmd ) Always read your man
-pages when in doubt. It helps. If it doesn't, then you might need to look up
-elsewhere.
+[^1]:
+    ( https://www.mankier.com/1/buildah-config#--cmd ) Always read your man
+    pages when in doubt. It helps. If it doesn't, then you might need to look up
+    elsewhere.

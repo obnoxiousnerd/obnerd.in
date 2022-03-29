@@ -1,6 +1,7 @@
 const toml = require('toml');
 const md = require('markdown-it');
 const anchor = require('markdown-it-anchor');
+const footnote = require('markdown-it-footnote');
 const rss = require('@11ty/eleventy-plugin-rss');
 const shiki = require('markdown-it-shiki').default;
 const toc = require('eleventy-plugin-toc');
@@ -51,7 +52,8 @@ module.exports = function (eleventyConfig) {
     })
     .use(shiki, {
       theme: 'ayu-dark',
-    });
+    })
+    .use(footnote);
   eleventyConfig.setLibrary('md', mdFactory);
 
   // Table of contents
