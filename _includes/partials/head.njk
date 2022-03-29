@@ -19,6 +19,9 @@
         <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin="{{ "crossorigin" if preload.crossorigin == true else preload.crossorigin }}"{% endif %}>
     {%- endfor -%}
 {%- endif -%}
+
+<meta name="generator" content="Eleventy"/>
+
 <link rel="shortcut icon" href="/favicon.png" type="image/png">
 <link rel="stylesheet" href="/main.css"/>
 <title>
