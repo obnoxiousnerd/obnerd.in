@@ -65,7 +65,7 @@ of Astro, as I'm writing this.
    bizarre bug which would throw random errors even on files with the correct
    syntax. It was a pain to get things fixed with that.
 2. Personal preferences. Astro, like Hugo or Eleventy, does not have
-   shortcodes[1] as of now (there will be, I know it, probably I'll implement it
+   shortcodes[^1] as of now (there will be, I know it, probably I'll implement it
    if I get the chance), which I absolutely like to use. I was not very pleased
    with writing JSX-esque components in my Markdown. Also my way of writing and
    structuring my personal website didn't align with the structure of a typical
@@ -99,6 +99,7 @@ this. And, I will be writing my Projects page in Astro, because I want some
 dynamic things in it without sacrificing static HTML! There you go, yet another
 case of extensibility.
 
-[1]: In Astro, shortcodes basically means using a component written in a
-framework or Astro's own templating language. I'll implement them if its in
-the plans and if I get it done correctly.
+[^1]:
+    In Astro, shortcodes basically means using a component written in a
+    framework or Astro's own templating language. I'll implement them if its in
+    the plans and if I get it done correctly.
