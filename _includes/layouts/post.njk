@@ -9,6 +9,11 @@ layout: main
     </time>
     <span class="seperator">&centerdot;</span>
     <span>By</span>{% include "thingmajigs/h-card-mini.njk" %}
+    <br>
+    <span>Tagged under: </span>
+    {% for tag in tags %}
+      <a class="p-category" href="/tags/{{ tag }}">{{ tag }}</a>
+    {% endfor %}
   </header>
   <aside>
     {{ content | toc | safe }}
