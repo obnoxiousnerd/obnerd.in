@@ -1,11 +1,6 @@
 const toml = require('toml');
-const md = require('markdown-it');
-const anchor = require('markdown-it-anchor');
-const footnote = require('markdown-it-footnote');
 const rss = require('@11ty/eleventy-plugin-rss');
-const shiki = require('markdown-it-shiki').default;
 const toc = require('eleventy-plugin-toc');
-
 const { dateToHuman } = require('./_11ty/filters');
 
 /**
@@ -43,18 +38,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.setDataDeepMerge(true);
-
-  // Markdown plugins!
-  const mdFactory = md({ html: true })
-    .use(anchor, {
-      levels: [1, 2, 3, 4, 5],
-      slugify: require('slug'),
-    })
-    .use(shiki, {
-      theme: 'ayu-dark',
-    })
-    .use(footnote);
-  eleventyConfig.setLibrary('md', mdFactory);
+  eleventyConfig.setLibrary('md', {
+    set: () => {},
+    render: (str) =>
+      import('./_11ty/markdown.mjs').then(({ render }) => render(str)),
+  });
 
   // Table of contents
   eleventyConfig.addPlugin(toc, {
