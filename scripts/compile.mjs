@@ -1,8 +1,9 @@
 import sass from 'sass';
-import { build as esbuild } from 'esbuild';
+import { build as tsup } from 'tsup';
 import { existsSync } from 'fs';
 import { mkdir, writeFile } from 'fs/promises';
 import { watch } from 'chokidar';
+import path, { join } from 'path';
 
 const buildSass = async () => {
   const compiled = sass.compile('_public/main.scss');
@@ -11,12 +12,7 @@ const buildSass = async () => {
 };
 
 const runEsbuild = async () => {
-  await esbuild({
-    entryNames: '_public/index.ts',
-    bundle: true,
-    minify: true,
-    outfile: 'dist/index.js',
-  });
+  await tsup({ config: 'tsup.config.ts' });
 };
 
 const build = async () => {

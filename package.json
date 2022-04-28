@@ -14,17 +14,17 @@
     "@fontsource/cabin": "^4.5.5"
   },
   "devDependencies": {
-    "@11ty/eleventy": "2.0.0-canary.4",
+    "@11ty/eleventy": "2.0.0-canary.5",
     "@11ty/eleventy-fetch": "^3.0.0",
     "@11ty/eleventy-img": "^2.0.0",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@retronav/rehype-shiki": "^1.0.1",
     "@sindresorhus/slugify": "^2.1.0",
     "chokidar": "^3.5.3",
-    "dayjs": "^1.11.0",
+    "dayjs": "^1.11.1",
     "dotenv": "^16.0.0",
     "eleventy-plugin-toc": "^1.1.5",
-    "esbuild": "^0.14.34",
+    "esbuild": "^0.14.36",
     "hast-util-to-string": "^2.0.0",
     "node-fetch": "^2.6.7",
     "npm-run-all": "^4.1.5",
@@ -35,12 +35,13 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
-    "sass": "^1.50.0",
+    "sass": "^1.50.1",
     "shiki": "^0.10.1",
     "slug": "^5.3.0",
     "toml": "^3.0.0",
+    "tsup": "^5.12.5",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.0",
-    "zx": "^6.0.7"
+    "zx": "^6.1.0"
   }
 }

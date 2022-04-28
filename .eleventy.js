@@ -22,6 +22,11 @@ module.exports = function (eleventyConfig) {
   // Add TOML support for data
   eleventyConfig.addDataExtension('toml', (contents) => toml.parse(contents));
 
+  eleventyConfig.addCollection('posts', (collection) => {
+    return collection
+      .getFilteredByGlob('views/posts/*.md')
+      .filter((post) => !post.data.draft);
+  });
   eleventyConfig.addCollection('notes', (collection) => {
     return collection.getFilteredByGlob('views/notes/*.md');
   });
