@@ -11,37 +11,37 @@
     "postinstall": "node scripts/fetch-code-theme.mjs"
   },
   "dependencies": {
-    "@fontsource/cabin": "^4.5.5"
+    "@fontsource/cabin": "^4.5.6"
   },
   "devDependencies": {
     "@11ty/eleventy": "2.0.0-canary.5",
     "@11ty/eleventy-fetch": "^3.0.0",
-    "@11ty/eleventy-img": "^2.0.0",
-    "@11ty/eleventy-plugin-rss": "^1.1.2",
+    "@11ty/eleventy-img": "^2.0.1",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@retronav/rehype-shiki": "^1.0.1",
     "@sindresorhus/slugify": "^2.1.0",
     "chokidar": "^3.5.3",
-    "dayjs": "^1.11.1",
-    "dotenv": "^16.0.0",
+    "dayjs": "^1.11.3",
+    "dotenv": "^16.0.1",
     "eleventy-plugin-toc": "^1.1.5",
-    "esbuild": "^0.14.36",
+    "esbuild": "^0.14.48",
     "hast-util-to-string": "^2.0.0",
     "node-fetch": "^2.6.7",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-shift-heading": "^1.0.2",
     "rehype-stringify": "^9.0.3",
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
-    "sass": "^1.50.1",
+    "sass": "^1.53.0",
     "shiki": "^0.10.1",
     "slug": "^5.3.0",
     "toml": "^3.0.0",
-    "tsup": "^5.12.5",
+    "tsup": "^5.12.9",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.0",
-    "zx": "^6.1.0"
+    "zx": "^6.2.5"
   }
 }
