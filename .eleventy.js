@@ -45,6 +45,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.setLibrary('md', {
     set: () => {},
+    disable: () => {},
     render: (str) =>
       import('./_11ty/markdown.mjs').then(({ render }) => render(str)),
   });
