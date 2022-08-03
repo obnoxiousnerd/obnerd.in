@@ -35,11 +35,13 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection('content', (collection) => {
-    return collection.getFilteredByGlob([
-      'views/notes/*.md',
-      'views/posts/*.md',
-      'views/likes/*.md',
-    ]);
+    return collection
+      .getFilteredByGlob([
+        'views/notes/*.md',
+        'views/posts/*.md',
+        'views/likes/*.md',
+      ])
+      .filter((post) => !post?.data?.draft);
   });
 
   eleventyConfig.setDataDeepMerge(true);
