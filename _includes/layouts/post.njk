@@ -10,9 +10,13 @@ layout: main
     <span class="seperator">&centerdot;</span>
     <span>By</span>{% include "thingmajigs/h-card-mini.njk" %}
     <br>
-    <span>Tagged under: </span>
+    {% if tags.length > 1 %}
+      <span>Tagged under: </span>
+    {% endif %}
     {% for tag in tags %}
-      <a class="p-category" href="/tags/{{ tag }}">{{ tag }}</a>
+      {% if tag !== "posts" %}
+        <a class="p-category" href="/tags/{{ tag }}">{{ tag }}</a>
+      {% endif %}
     {% endfor %}
   </header>
   <aside>
