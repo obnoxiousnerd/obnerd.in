@@ -1,36 +1,28 @@
 ---
 layout: main
-eleventyComputed:
-    title: "Note written on {{ date | dateToHuman }}"
 ---
 
 <article class="note h-entry">
     <header>
+        <h1>{{ title }}</h1>
         <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
             {{ date | dateToHuman }}</time>
         <span class="seperator">&centerdot;</span>
        By {% include "thingmajigs/h-card-mini.njk" %}
     </header>
     <aside>
-        {% if url %}
-            <small>
-                &#x21AA;
-                <i>
-             Replying to <a class="u-in-reply-to" href="{{ url }}">{{ url }}</a>
-                </i>
-            </small>
+        {% if reply %}
+            <p style="padding-left: 1ch">
+                Replying to 
+                    <a class="u-in-reply-to" href="{{ reply }}">{{ reply }}</a>
+            </p>
         {% endif %}
     </aside>
-    <div class="p-content p-name">
+    <div class="e-content">
         {{ content | safe }}
     </div>
-    <br>
-    <small>
-        <data class="p-bridgy-omit-link" value="maybe"/>
-        <a class="u-url" href="{{ page.url }}">permalink</a>
-    </small>
     <hr>
     <footer>
-        {% include "../thingmajigs/webmentions.njk" %}
+        {% include "../thingmajigs/comments.njk" %}
     </footer>
 </article>

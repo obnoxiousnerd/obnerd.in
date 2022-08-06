@@ -46,6 +46,8 @@ date: $(date -Iseconds)
     exit
 
 else if set -q _flag_note
+    set note_title (gum input --placeholder "Title of note")
+
     echo -e "Hit ESC to save contents\n"
     set note_content (gum write --width 80 --placeholder "What goes into this note?")
     echo -e "\x1b[2A\x1b[2K" # Erase the message telling how to exit
@@ -57,7 +59,8 @@ else if set -q _flag_note
     or set notes 0
 
     set note "---
-url: $like_url
+title: $note_title
+reply: $note_reply_to
 date: $(date -Iseconds)
 ---
 $note_content
