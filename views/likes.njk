@@ -4,10 +4,12 @@ title: Likes
 
 <h1>{{ title }}</h1>
 
-{% for like in collections.likes %}
+<p>You might also think of them as bookmarks.</p>
+
+{% for like in collections.likes | sortByDate %}
     <section class="post-preview h-entry">
         <p>
-            <a class="p-name" href="{{ like.data.url }}">{{ like.data.url }}</a>
+            <a class="u-like-of" href="{{ like.data.url }}">{{ like.data.url }}</a>
         </p>
         <small>
             <time class="dt-published" datetime="{{ like.date | dateToRfc3339 }}">{{ like.date | dateToHuman }}</time>

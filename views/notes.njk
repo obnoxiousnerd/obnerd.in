@@ -7,16 +7,22 @@ title: Notes
 {% for note in collections.notes %}
     {% set url = note.data.page.url %}
     <section class="post-preview h-entry">
-        <p>
-            <a class="p-name" href="{{ url }}">Note written on 
-                <time class="dt-published" datetime="{{ note.date | dateToRfc3339 }}">{{ note.date | dateToHuman }}</time>
-            </a>
+        <a class="u-url" href="{{ url }}">
+            <h2>{{ note.data.title }}</h2>
+        </a>
+        <time class="dt-published" datetime="{{ note.date | dateToRfc3339 }}">
+            {{ note.date | dateToHuman(true) }}
+        </time>
+        {% if note.data.reply %}
+            <p style="padding-left: 1ch">
+                Replying to 
+                    <a class="u-in-reply-to" href="{{ note.data.reply }}">
+                        {{ note.data.reply }}
+                    </a>
+            </p>
+        {% endif %}
+        <p class="e-content">
+            {{ note.templateContent | safe }}
         </p>
-        <p class="p-summary">
-            {{ note.templateContent | safe | truncate(140) }}
-        </p>
-        <small>
-            <a class="u-url" href="{{ url }}">permalink</a>
-        </small>
     </section>
 {% endfor %}
