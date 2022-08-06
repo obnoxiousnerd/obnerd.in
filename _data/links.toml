@@ -1,20 +1,13 @@
-[nav.Main]
+[nav]
 Home = "/"
-Contact = "/contact"
+About = "/about"
 Projects = "/projects"
-RSS = "/feed.xml"
-
-[nav.Writings]
+Feeds = "/feeds"
 Blog = "/posts"
 Notes = "/notes"
 
-[nav.Links]
-Sourcehut = "https://sr.ht/~retronav"
-GitHub = "https://github.com/retronav"
-LinkedIn = "https://www.linkedin.com/in/pranav-karawale"
-
 [contact]
-Email = "pranav@?#?#?#?#.in"
+Email = "my first name [at] this domain"
 Mastodon = "@retronav@fosstodon.org"
 IRC = "pranav@tilde.chat / retronav@libera.chat"
 Matrix = "@pranav:envs.net"

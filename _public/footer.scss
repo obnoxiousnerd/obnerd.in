@@ -4,25 +4,10 @@ footer {
   position: relative;
   bottom: 0;
   margin-top: 2rem;
-  dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    @include v.size-md {
-      grid-template-columns: 1fr;
-    }
-    dd {
-      margin: 0;
-      ul {
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        list-style: none;
-        column-gap: 1.5rem;
-        justify-content: flex-end;
-        @include v.size-md {
-          justify-content: flex-start;
-        }
-      }
-    }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 }
