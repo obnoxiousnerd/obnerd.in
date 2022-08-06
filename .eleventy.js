@@ -15,6 +15,7 @@ module.exports = function (eleventyConfig) {
     'node_modules/@fontsource/cabin/files/cabin-latin-variable-wghtOnly-normal.woff2':
       'fonts/cabin-latin-variable-wghtOnly-normal.woff2',
   });
+  eleventyConfig.setServerPassthroughCopyBehavior('copy');
 
   // Set watch targets
   eleventyConfig.addWatchTarget('./_public');
@@ -24,27 +25,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection('posts', (collection) => {
     return collection
-      .getFilteredByGlob('views/posts/*.md')
-      .filter((post) => !post.data.draft);
-  });
-  eleventyConfig.addCollection('notes', (collection) => {
-    return collection.getFilteredByGlob('views/notes/*.md');
-  });
-  eleventyConfig.addCollection('likes', (collection) => {
-    return collection.getFilteredByGlob('views/likes/*.md');
-  });
-
-  eleventyConfig.addCollection('content', (collection) => {
-    return collection
-      .getFilteredByGlob([
-        'views/notes/*.md',
-        'views/posts/*.md',
-        'views/likes/*.md',
-      ])
+      .getFilteredByTag('posts')
       .filter((post) => !post?.data?.draft);
   });
 
-  eleventyConfig.setDataDeepMerge(true);
+  eleventyConfig.addCollection('activity', (collection) => {
+    return [
+      ...collection.getFilteredByTag('notes'),
+      ...collection.getFilteredByTag('likes'),
+    ].filter((post) => !post?.data?.draft);
+  });
+
   eleventyConfig.setLibrary('md', {
     set: () => {},
     disable: () => {},
@@ -64,6 +55,16 @@ module.exports = function (eleventyConfig) {
   // Add filters
   eleventyConfig.addFilter('dateToHuman', dateToHuman);
   eleventyConfig.addFilter('absoluteUrl', rss.absoluteUrl);
+  eleventyConfig.addFilter('getNewestItemDate', (data) => {
+    const getDate = (data) => data?.data?.updated || data.date;
+    return new Date(
+      getDate(data.sort((a, b) => getDate(b) - getDate(a)).shift())
+    );
+  });
+  eleventyConfig.addFilter('sortByDate', (data) => {
+    const getDate = (data) => data?.data?.updated || data.date;
+    return data.sort((a, b) => getDate(b) - getDate(a));
+  });
 
   return {
     markdownTemplateEngine: 'njk',

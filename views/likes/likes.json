@@ -1,3 +1,4 @@
 {
-  "layout": "like"
+  "layout": "like.njk",
+  "tags": ["likes"]
 }
