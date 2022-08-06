@@ -1,0 +1,49 @@
+---
+  layout: ""
+  permalink: "feeds/posts.xml"
+  eleventyExcludeFromCollections: true
+  date: Last Modified
+  metadata: 
+    title: "Pranav Karawale's blog"
+    subtitle: "Posts about some interesting stuff from Pranav Karawale's blog."
+    url: "https://karawale.in/"
+    feedUrl: "https://karawale.in/feeds/posts.xml"
+    author:
+      name: "Pranav Karawale"
+      email: "pranav@karawale.in"
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.subtitle }}</subtitle>
+  <link href="{{ metadata.feedUrl }}" rel="self"/>
+  <link href="{{ metadata.url }}"/>
+  <generator uri="https://11ty.dev" version="{{ eleventy.version }}">
+    {{ eleventy.generator }}
+  </generator>
+  <updated>{{ collections.posts | getNewestItemDate | dateToRfc3339 }}</updated>
+  <id>{{ metadata.url }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  <category term="technology" />
+  {% for post in collections.all | sortByDate %}
+    {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+    {% if post.data.tags and post.data.tags.includes("posts") %}
+      <entry>
+        <title>{{ post.data.title }}</title>
+        <link href="{{ absolutePostUrl }}"/>
+        <updated>
+          {% if post.data.updated %}
+            {{ post.data.updated | dateToRfc3339 }}
+          {% else %}
+            {{ post.date | dateToRfc3339 }}
+          {% endif %}
+        </updated>
+        <id>{{ absolutePostUrl }}</id>
+        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+      </entry>
+    {% endif %}
+  {% endfor %}
+</feed>

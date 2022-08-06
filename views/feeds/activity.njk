@@ -1,0 +1,48 @@
+---
+  layout: ""
+  permalink: "feeds/activity.xml"
+  eleventyExcludeFromCollections: true
+  date: Last Modified
+  metadata: 
+    title: "Pranav Karawale's activity feed"
+    subtitle: "Notes, replies and likes to other websites from Pranav Karawale's website."
+    url: "https://karawale.in/"
+    feedUrl: "https://karawale.in/feeds/activity.xml"
+    author:
+      name: "Pranav Karawale"
+      email: "pranav@karawale.in"
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.subtitle }}</subtitle>
+  <link href="{{ metadata.feedUrl }}" rel="self"/>
+  <link href="{{ metadata.url }}"/>
+  <generator uri="https://11ty.dev" version="{{ eleventy.version }}">
+    {{ eleventy.generator }}
+  </generator>
+  <updated>{{ collections.activity | getNewestItemDate | dateToRfc3339 }}</updated>
+  <id>{{ metadata.url }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  <rights>
+   © CC-BY-NC 4.0 2020-{{ page.date.getFullYear() }} Pranav Karawale
+  </rights>
+  <category term="technology" />
+  {% for entry in collections.all | sortByDate %}
+    {% set absoluteEntryUrl %}{{ entry.url | url | absoluteUrl(metadata.url) }}{% endset %}
+    {% if entry.data.tags and (entry.data.tags.includes("notes") or entry.data.tags.includes("likes"))%}
+      <entry>
+        <title>{{ entry.data.title }}</title>
+        <link href="{{ absoluteEntryUrl }}"/>
+        <updated>{{ entry.date | dateToRfc3339 }}</updated>
+        <id>{{ absoluteEntryUrl }}</id>
+        {% if entry.templateContent %}
+          <content type="html">{{ entry.templateContent | htmlToAbsoluteUrls(absoluteEntryUrl) }}</content>
+        {% endif %}
+      </entry>
+    {% endif %}
+  {% endfor %}
+</feed>
