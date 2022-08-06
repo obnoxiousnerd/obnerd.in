@@ -33,5 +33,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-
-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
