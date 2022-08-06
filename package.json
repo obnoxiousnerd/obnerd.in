@@ -26,6 +26,7 @@
     "eleventy-plugin-toc": "^1.1.5",
     "esbuild": "^0.14.51",
     "hast-util-to-string": "^2.0.0",
+    "minify-xml": "^3.4.0",
     "node-fetch": "^2.6.7",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",

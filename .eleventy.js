@@ -2,6 +2,7 @@ const toml = require('toml');
 const rss = require('@11ty/eleventy-plugin-rss');
 const toc = require('eleventy-plugin-toc');
 const { dateToHuman } = require('./_11ty/filters');
+const minifyXML = require('minify-xml').minify;
 
 /**
  *
@@ -64,6 +65,15 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('sortByDate', (data) => {
     const getDate = (data) => data?.data?.updated || data.date;
     return data.sort((a, b) => getDate(b) - getDate(a));
+  });
+
+  eleventyConfig.addTransform('rssmin', (content, outputPath) => {
+    if (outputPath.endsWith('.xml')) {
+      return minifyXML(content, {
+        trimWhitespaceFromTexts: true
+      });
+    }
+    return content;
   });
 
   return {
