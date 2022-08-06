@@ -1,9 +1,10 @@
 ---
 title: Moving from Windows to Fedora
-description: |
-  An entry discussing the things I did to migrate my laptop from Windows 11 to Fedora.
+description: An entry discussing the things I did to migrate my laptop from 
+  Windows 11 to Fedora.
 date: 2022-08-02
-# draft: true
+updated: 2022-08-05
+tags: [fedora, linux]
 ---
 
 # Motivation
@@ -62,9 +63,9 @@ to export my GPG keys. The resulting directory:
 ```
 keys-backup/
 ├── gpg
-│	├── priv.asc
-│	├── pub.asc
-│	└── trustdb.txt
+│   ├── priv.asc
+│   ├── pub.asc
+│   └── trustdb.txt
 └── ssh
     ├── config
     ├── gh_codespaces.id_ed25519
@@ -188,7 +189,9 @@ wrong, but now I couldn't figure out what to do.
 ## Installing the other custom driver
 
 Since I had not upgraded the kernel, this was the perfect chance to fix this.
-After upgrading the kernel, I then installed Tomás Pinho's driver which is
+After upgrading the kernel, I then installed 
+[Tomás Pinho's driver](https://github.com/tomaspinho/rtl8821ce)
+which is
 specifically made for Realtek RTL8821CE network card. Following the instructions
 given in the README, I was able to install this driver. Minor differences in the
 process installation were:
@@ -202,9 +205,19 @@ the Internet, run updates, do stuff. Life back to normal.
 
 # More things I did to make stuff work
 
+> I intend this section to be a "living section"; keeping track of things I
+> did to make stuff work. This might eventually get moved to a seperate, living
+> document.
+
 - Firefox was not playing videos. From the solutions mentioned on
   [this page](https://unix.stackexchange.com/q/690359), installing `ffmpeg`
   did the trick.
 - Bring back the
   [system tray](https://extensions.gnome.org/extension/615/appindicator-support/)
   in the top bar.
+- Set `snd-hda-intel`'s model to
+  [`headset-mic`](https://www.kernel.org/doc/html/latest/sound/hd-audio/models.html)
+  via modprobe to make headset mic working again.
+- For some reason OBS outputs poor recordings when using the `FFMPEG VAAPI`
+  encoder, so to make it print better, albeit more huge recordings, use CQP
+  for "Rate Control" with QP=30 (works fine enough for my use case).
