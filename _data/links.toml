@@ -5,6 +5,7 @@ Projects = "/projects"
 Feeds = "/feeds"
 Blog = "/posts"
 Notes = "/notes"
+Likes = "/likes"
 
 [contact]
 Email = "my first name [at] this domain"

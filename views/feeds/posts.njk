@@ -27,6 +27,9 @@
     <name>{{ metadata.author.name }}</name>
     <email>{{ metadata.author.email }}</email>
   </author>
+  <rights>
+   © CC BY-NC-SA 4.0 2020-{{ page.date.getFullYear() }} Pranav Karawale
+  </rights>
   <category term="technology" />
   {% for post in collections.all | sortByDate %}
     {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}

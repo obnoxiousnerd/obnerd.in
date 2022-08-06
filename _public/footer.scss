@@ -4,10 +4,13 @@ footer {
   position: relative;
   bottom: 0;
   margin-top: 2rem;
+  text-align: center;
   nav ul {
+    padding: 0;
     list-style: none;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    place-content: center;
   }
 }
