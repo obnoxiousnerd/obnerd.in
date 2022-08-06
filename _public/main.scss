@@ -7,27 +7,11 @@
 
 // Fonts
 
-@include cabin.fontFaceVariable($fontDir: 'fonts');
-
+@include cabin.fontFaceVariable($fontDir: '/fonts');
 @font-face {
-  font-family: 'Victor Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Victor Mono Medium'), local('VictorMono-Medium'),
-    local('Victor Mono'), local('VictorMono'),
-    url('./fonts/victor-mono-latin.woff2') format('woff2');
+  font-family: 'Iosevka Minimal';
+  src: url(/fonts/iosevka-minimal.woff2);
 }
-
-// @font-face {
-//   font-family: 'Roboto Slab';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-display: swap;
-//   src: local('Roboto Slab'), local('RobotoSlab'),
-//     url('./fonts/roboto-slab-latin-variable-wghtOnly-normal.woff2')
-//       format('woff2');
-// }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -36,6 +20,7 @@
     --color-main-text: var(--dark-color-main-text);
     --color-accent-text: var(--dark-color-accent-text);
     --color-anchor: var(--dark-color-anchor);
+    --color-blockquote: var(--dark-color-blockquote);
   }
 }
 @media (prefers-color-scheme: light) {
@@ -45,6 +30,7 @@
     --color-main-text: var(--light-color-main-text);
     --color-accent-text: var(--light-color-accent-text);
     --color-anchor: var(--light-color-anchor);
+    --color-blockquote: var(--light-color-blockquote);
   }
 }
 
@@ -124,6 +110,10 @@ code {
   word-wrap: break-word;
 }
 
+blockquote {
+  color: var(--color-blockquote);
+}
+
 header {
   text-align: center;
 }
@@ -152,9 +142,6 @@ section.post-preview {
 }
 
 .note {
-  header {
-    text-align: left;
-  }
   .p-content {
     font-size: var(--font-size-h4);
   }

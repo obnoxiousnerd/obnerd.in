@@ -7,6 +7,6 @@ author = "Pranav Karawale"
 
 # Based on https://www.aleksandrhovhannisyan.com/blog/configuring-web-fonts-in-11ty-with-global-data/
 preloads = [
-    {crossorigin = "anonymous", as = "font", type = "font/woff2", href = "fonts/cabin-latin-variable-wghtOnly-normal.woff2"},
-    {crossorigin = "anonymous", as = "font", type = "font/woff2", href = "fonts/victor-mono-latin.woff2"},
+    {crossorigin = "anonymous", as = "font", type = "font/woff2", href = "/fonts/cabin-latin-variable-wghtOnly-normal.woff2"},
+    {crossorigin = "anonymous", as = "font", type = "font/woff2", href = "/fonts/iosevka-minimal.woff2"},
 ]

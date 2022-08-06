@@ -4,12 +4,14 @@
   --light-color-main-text: #292929;
   --light-color-accent-text: #292929;
   --light-color-anchor: #0040b6;
+  --light-color-blockquote: #444;
 
   --dark-color-main: #161517;
   --dark-color-accent: #242124;
   --dark-color-main-text: #fafafa;
   --dark-color-accent-text: #ebeaeb;
   --dark-color-anchor: #4fbeff;
+  --dark-color-blockquote: #ccc;
 
   // Typography scale: Major third
   --font-size-title: 3.2rem;
@@ -22,7 +24,7 @@
 
   --blockquote-border: 0.3rem solid #666;
   --font-family: 'CabinVariable', sans-serif;
-  --code-font-family: 'Victor Mono', monospace;
+  --code-font-family: 'Iosevka Minimal', monospace;
   --border-radius-generic: 5px;
 }
 
