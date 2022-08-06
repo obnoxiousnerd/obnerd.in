@@ -1,3 +1,15 @@
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1140,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+:root {
+  --step--2: clamp(0.69rem, calc(0.68rem + 0.05vw), 0.72rem);
+  --step--1: clamp(0.83rem, calc(0.81rem + 0.13vw), 0.90rem);
+  --step-0: clamp(1.00rem, calc(0.95rem + 0.24vw), 1.13rem);
+  --step-1: clamp(1.20rem, calc(1.12rem + 0.40vw), 1.41rem);
+  --step-2: clamp(1.44rem, calc(1.32rem + 0.62vw), 1.76rem);
+  --step-3: clamp(1.73rem, calc(1.54rem + 0.92vw), 2.20rem);
+  --step-4: clamp(2.07rem, calc(1.81rem + 1.31vw), 2.75rem);
+  --step-5: clamp(2.49rem, calc(2.12rem + 1.84vw), 3.43rem);
+}
+
 :root {
   --light-color-main: #ebffff;
   --light-color-accent: #c2fdff;
@@ -13,14 +25,14 @@
   --dark-color-anchor: #4fbeff;
   --dark-color-blockquote: #ccc;
 
-  // Typography scale: Major third
-  --font-size-title: 3.2rem;
-  --font-size-h1: 2.4rem;
-  --font-size-h2: 2rem;
-  --font-size-h3: 1.6rem;
-  --font-size-h4: 1.2rem;
-  --font-size-base: 1rem;
-  --font-size-small: 0.8rem;
+  // Aliased with output from utopia.fyi
+  --font-size-title: var(--step-5);
+  --font-size-h1: var(--step-4);
+  --font-size-h2: var(--step-3);
+  --font-size-h3: var(--step-2);
+  --font-size-h4: var(--step-1);
+  --font-size-base: var(--step-0);
+  --font-size-small: var(--step--1);
 
   --blockquote-border: 0.3rem solid #666;
   --font-family: 'CabinVariable', sans-serif;
