@@ -26,6 +26,7 @@ specifiers:
   sass: ^1.54.0
   shiki: ^0.10.1
   slug: ^5.3.0
+  strip-json-comments: ^5.0.0
   toml: ^3.0.0
   tsup: ^5.12.9
   unified: ^10.1.2
@@ -60,6 +61,7 @@ devDependencies:
   sass: 1.54.0
   shiki: 0.10.1
   slug: 5.3.0
+  strip-json-comments: 5.0.0
   toml: 3.0.0
   tsup: 5.12.9
   unified: 10.1.2
@@ -3541,6 +3543,11 @@ packages:
   /strip-json-comments/2.0.1:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /strip-json-comments/5.0.0:
+    resolution: {integrity: sha512-V1LGY4UUo0jgwC+ELQ2BNWfPa17TIuwBLg+j1AA/9RPzKINl1lhxVEu2r+ZTTO8aetIsUzE5Qj6LMSBkoGYKKw==}
+    engines: {node: '>=14.16'}
     dev: true
 
   /style-to-object/0.3.0:

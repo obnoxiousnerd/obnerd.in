@@ -14,7 +14,7 @@ import { slugifyWithCounter } from '@sindresorhus/slugify';
 import { toString } from 'hast-util-to-string';
 import rehypeShiftHeading from 'rehype-shift-heading';
 
-const highlighter = await getHighlighter({ theme: 'ayu-dark' });
+const highlighter = await getHighlighter({ theme: 'gruvbox-dark-hard' });
 
 /**
  * Render markdown to HTML via unified.
