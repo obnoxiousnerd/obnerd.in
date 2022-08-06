@@ -7,6 +7,12 @@ layout: main
     <time class="dt-published" datetime="{{ date | dateToRfc3339 }}">
       {{ date | dateToHuman }}
     </time>
+    {% if updated %}
+      <span>, updated on</span>
+      <time class="dt-updated" datetime="{{ updated | dateToRfc3339 }}">
+      {{ updated | dateToHuman }}
+      </time>
+    {% endif %}
     <span class="seperator">&centerdot;</span>
     <span>By</span>{% include "thingmajigs/h-card-mini.njk" %}
     <br>
@@ -28,6 +34,6 @@ layout: main
   </div>
   <footer>
     <hr>
-    {% include "../thingmajigs/webmentions.njk" %}
+    {% include "../thingmajigs/comments.njk" %}
   </footer>
 </article>

@@ -1,10 +1,17 @@
 <section class="h-entry post-preview">
-  <h2 class="p-name">{{ post.data.title }}</h2>
+  <a class="u-url" href="{{ post.url }}">
+    <h2 class="p-name">{{ post.data.title }}</h2>
+  </a>
   <small>
     <time class="dt-published" datetime="{{ post.data.date | dateToRfc3339 }}">
       {{ post.data.date | dateToHuman }}
     </time>
+    {% if post.data.updated %}
+      <span>, updated on</span>
+      <time class="dt-updated" datetime="{{ post.data.updated | dateToRfc3339 }}">
+        {{ post.data.updated | dateToHuman }}
+      </time>
+    {% endif %}
   </small>
-  <p class="p-summary">{{ post.data.description }}</p>
-  <a class="u-url" href="{{ post.url }}">Read more...</a>
+  <p hidden class="p-summary">{{ post.data.description }}</p>
 </section>
