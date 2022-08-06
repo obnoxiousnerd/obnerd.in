@@ -1,10 +1,15 @@
-<h2>Webmentions</h2>
+<h2>Comments</h2>
 <section class="webmention webmention-reactions">
     <p>
-        My site uses <a href="http://indieweb.org/webmention">Webmentions</a> via the 
-        <a href="https://indieweb.org">Indieweb</a>
-        and <a href="https://webmention.io">webmention.io</a> 
-        for likes, reposts, and replies/comments.
+        To comment, like, or repost this page, my website supports 
+        <a href="https://en.wikipedia.org/wiki/Webmention">webmentions</a>.
+        Such interactions on different social media platforms will show up here.
+        Alternatively, you can also send a webmention from your website using
+        the form below.
+        <br>
+        <br>
+        Or if you want to, you can e-mail your thoughts about it on 
+        "<code>{{ links.contact.Email }}</code>".
     </p>
     <form class="send-webmention" action="{{ site.webmentionUrl }}" method="post">
         <label for="webmention-form-input">
