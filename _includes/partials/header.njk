@@ -4,4 +4,14 @@
     <div class="h-card">
         <a class="u-url p-name" href="/">Pranav Karawale</a>
     </div>
+    <hr />
+    <nav>
+        <ul>
+        {% for entry, link in links.nav %}
+            <li>
+            <a href="{{ link }}">{{ entry }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </nav>
 </header>
