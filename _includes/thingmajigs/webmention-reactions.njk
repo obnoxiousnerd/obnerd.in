@@ -1,4 +1,4 @@
-<ul class="webmention-reactions">
+<ul class="webmention-reactions" aria-label="Likes and reposts of this page">
     {% for mention in webmentions.children %}
         {% if mention["wm-target"] == (page.url | absoluteUrl(site.canonical)) %}
             {% if mention["wm-property"] == "like-of" or 

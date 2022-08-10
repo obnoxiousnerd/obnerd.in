@@ -10,7 +10,10 @@
             Or if you want to, you can e-mail your thoughts about it on 
             <code>{{ links.contact.Email }}</code>.
         </p>
-        <form class="send-webmention" action="{{ site.webmentionUrl }}" method="post">
+        <form 
+            class="send-webmention" action="{{ site.webmentionUrl }}" 
+            method="post"
+            aria-label="Send a webmention to this page">
             <label for="webmention-form-input">
                 URL of your webmention
             </label>
@@ -25,7 +28,7 @@
             >
             <input type="submit" value="Send webmention">
         </form>
-        <details>
+        <details aria-label="Likes and reposts of this page">
             <summary>
                 Likes and reposts
             </summary>
@@ -34,5 +37,6 @@
         <h3>Replies</h3>
         {% include "./webmention-replies.njk" %}
     </section>
-    <section class="webmention-replies"></section>
+    <section class="webmention-replies" aria-label="Replies to this page">
+    </section>
 </section>

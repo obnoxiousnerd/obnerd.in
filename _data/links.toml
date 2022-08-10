@@ -4,6 +4,11 @@ Projects = "/projects"
 Blog = "/posts"
 More = "/more-links"
 
+[more]
+Notes = "/notes"
+Likes = "/likes"
+Feeds = "/feeds"
+
 [contact]
 Email = "pranav [at] karawale.in"
 Mastodon = "@retronav@fosstodon.org"

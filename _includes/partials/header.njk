@@ -1,5 +1,6 @@
 <header>
-    <img src="/logo96.webp" height="48" width="48" alt="">
+    <img src="/logo96.webp" height="48" width="48" 
+        alt="My logo; The letters 'pk' in a white, bold font on a purplish background.">
     <br/>
     <div class="h-card">
         <a class="u-url p-name" href="/">Pranav Karawale</a>
@@ -9,7 +10,10 @@
         <ul>
         {% for entry, link in links.nav %}
             <li>
-            <a href="{{ link }}">{{ entry }}</a>
+                <a 
+                    href="{{ link }}"
+                    {% if entry == "More" %}aria-label="More links"{% endif %}
+                >{{ entry }}</a>
             </li>
         {% endfor %}
         </ul>

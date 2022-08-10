@@ -1,0 +1,18 @@
+---
+title: More Links
+---
+
+<h1>More links</h1>
+
+<p>
+    This page hosts links throughout this website that couldn't find a place
+    in the site's navigation bar.
+</p>
+
+<ul style="font-size: var(--font-size-h3)">
+    {% for label, url in links.more %}
+        <li>
+            <a href="{{ url }}">{{ label }}</a>
+        </li>
+    {% endfor %}
+</ul>

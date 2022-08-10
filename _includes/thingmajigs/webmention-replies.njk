@@ -3,7 +3,7 @@
         {% if mention["wm-target"] == (page.url | absoluteUrl(site.canonical)) %}
             {% if mention["wm-property"] == "in-reply-to" %}
                 <li class="webmention-reply">
-                    <article>
+                    <article role="comment">
                         <header>
                             <a class="webmention-reply-author" href="{{ mention.author.url }}">
                                 <img height="48" width="48" src="{{ mention.author.photo }}" alt="Avatar of {{ mention.author.name }}">
