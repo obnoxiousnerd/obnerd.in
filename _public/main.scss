@@ -1,5 +1,5 @@
 @use './variables.scss' as v;
-@use './navbar.scss';
+@use './header.scss';
 @use './footer.scss';
 @use './markdown.scss';
 @use './webmentions.scss';
@@ -21,6 +21,7 @@
     --color-accent-text: var(--dark-color-accent-text);
     --color-anchor: var(--dark-color-anchor);
     --color-blockquote: var(--dark-color-blockquote);
+    --border: var(--dark-border);
   }
 }
 @media (prefers-color-scheme: light) {
@@ -31,6 +32,7 @@
     --color-accent-text: var(--light-color-accent-text);
     --color-anchor: var(--light-color-anchor);
     --color-blockquote: var(--light-color-blockquote);
+    --border: var(--light-border);
   }
 }
 
@@ -106,8 +108,11 @@ code {
   font-variant-ligatures: none;
 }
 
-code {
+code:not(pre code) {
   word-wrap: break-word;
+  padding: 0 2px;
+  border-radius: var(--border-radius-generic);
+  background-color: var(--color-accent);
 }
 
 blockquote {
@@ -141,6 +146,11 @@ section.post-preview {
   }
 }
 
+aside {
+  margin: 1rem;
+}
+
+// Notes
 .note {
   .p-content {
     font-size: var(--font-size-h4);

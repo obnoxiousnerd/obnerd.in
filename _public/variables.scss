@@ -11,19 +11,21 @@
 }
 
 :root {
-  --light-color-main: #ebffff;
-  --light-color-accent: #c2fdff;
+  --light-color-main: #faf9fb;
+  --light-color-accent: #e9e6e9;
   --light-color-main-text: #292929;
   --light-color-accent-text: #292929;
   --light-color-anchor: #0040b6;
   --light-color-blockquote: #444;
+  --light-border: #444;
 
   --dark-color-main: #161517;
-  --dark-color-accent: #242124;
+  --dark-color-accent: #343134;
   --dark-color-main-text: #fafafa;
   --dark-color-accent-text: #ebeaeb;
   --dark-color-anchor: #4fbeff;
   --dark-color-blockquote: #ccc;
+  --dark-border: #ccc;
 
   // Aliased with output from utopia.fyi
   --font-size-title: var(--step-5);

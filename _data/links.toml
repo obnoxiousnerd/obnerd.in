@@ -1,14 +1,11 @@
 [nav]
-Home = "/"
 About = "/about"
 Projects = "/projects"
-Feeds = "/feeds"
 Blog = "/posts"
-Notes = "/notes"
-Likes = "/likes"
+More = "/more-links"
 
 [contact]
-Email = "my first name [at] this domain"
+Email = "pranav [at] karawale.in"
 Mastodon = "@retronav@fosstodon.org"
 IRC = "pranav@tilde.chat / retronav@libera.chat"
 Matrix = "@pranav:envs.net"

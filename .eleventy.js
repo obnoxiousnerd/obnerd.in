@@ -80,7 +80,7 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dir: {
-      input: 'views',
+      input: 'content',
       output: 'dist',
       includes: '../_includes',
       layouts: '../_includes/layouts',

@@ -26,7 +26,10 @@ layout: main
     {% endfor %}
   </header>
   <aside>
-    {{ content | toc | safe }}
+    <details class="toc">
+      <summary>Table of Contents</summary>
+      {{ content | toc | safe }}
+    </details>
   </aside>
   <hr/>
   <div class="e-content">

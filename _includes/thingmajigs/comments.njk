@@ -2,15 +2,13 @@
     <h2>Comments</h2>
     <section class="webmention webmention-reactions">
         <p>
-            To comment, like, or repost this page, my website supports 
+            My website supports 
             <a href="https://en.wikipedia.org/wiki/Webmention">webmentions</a>.
-            Such interactions on different social media platforms will show up here.
-            Alternatively, you can also send a webmention from your website using
-            the form below.
-            <br>
+            This means that if you like, repost, or reply to this page via
+            Mastodon, Twitter, etc. they will show up here.
             <br>
             Or if you want to, you can e-mail your thoughts about it on 
-            "<code>{{ links.contact.Email }}</code>".
+            <code>{{ links.contact.Email }}</code>.
         </p>
         <form class="send-webmention" action="{{ site.webmentionUrl }}" method="post">
             <label for="webmention-form-input">
