@@ -68,9 +68,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addTransform('rssmin', (content, outputPath) => {
-    if (outputPath.endsWith('.xml')) {
+    if (outputPath && outputPath.endsWith('.xml')) {
       return minifyXML(content, {
-        trimWhitespaceFromTexts: true
+        trimWhitespaceFromTexts: true,
       });
     }
     return content;

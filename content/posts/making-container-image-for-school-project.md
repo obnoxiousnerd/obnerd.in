@@ -1,8 +1,7 @@
 ---
 title: Making a container image for my school python project
-description:
-  An entry discussing the journey of making a container image for a school
-  project using podman and buildah.
+description: An entry discussing the journey of making a container image for a 
+   school project using podman and buildah.
 date: 2022-03-23
 tags: [python, podman, buildah, container, school]
 ---
