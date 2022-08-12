@@ -26,7 +26,7 @@ argparse "l/like=?" "n/note" "p/post" -- $argv
 or exit 2
 
 if set -q _flag_like
-    if test -n _flag_like
+    if test -n "$_flag_like"
         set like_url $_flag_like
     else
         set like_url (gum input --placeholder "What post do you want to like?")
@@ -34,14 +34,14 @@ if set -q _flag_like
     
     # This helps create files as 2022-31-01, 2022-31-02
     # [Year]-[ISO Week number]-[nth file this week]
-    set likes (count (ls "$cwd/views/likes" | grep $file_time_ident))
+    set likes (count (ls "$cwd/content/likes" | grep $file_time_ident))
     or set likes 0
     
     echo "---
 url: $like_url
 date: $(date -Iseconds)
 ---
-" > "$cwd/views/likes/$file_time_ident-$(math $likes+1 | xargs printf '%02d').md"
+" > "$cwd/content/likes/$file_time_ident-$(math $likes+1 | xargs printf '%02d').md"
 
     exit
 
@@ -55,7 +55,7 @@ else if set -q _flag_note
         set note_reply_to (gum input --placeholder "URL of post replying to")
     end
 
-    set notes (count (ls "$cwd/views/notes" | grep $file_time_ident))
+    set notes (count (ls "$cwd/content/notes" | grep $file_time_ident))
     or set notes 0
 
     set note "---
@@ -65,7 +65,7 @@ date: $(date -Iseconds)
 ---
 $note_content
 "
-    set note_filename "$cwd/views/notes/$file_time_ident-$(math $notes+1 | xargs printf '%02d').md"
+    set note_filename "$cwd/content/notes/$file_time_ident-$(math $notes+1 | xargs printf '%02d').md"
     echo $note > $note_filename
     # If post is not a reply, remove the `url` frontmatter property
     if ! set -q note_reply_to
@@ -91,7 +91,7 @@ draft: true
 ---"
     # convert post title to kebab case
     set post_filename (node -e "console.log(process.env.post_title.replaceAll(' ', '-').toLocaleLowerCase())")
-    echo $post > "$cwd/views/posts/$post_filename.md"
+    echo $post > "$cwd/content/posts/$post_filename.md"
     exit
 else
     echo "Can't guess what you wanted me to do."
