@@ -146,6 +146,28 @@ section.post-preview {
   }
 }
 
+// Other posts (Previous, next)
+nav.other-posts {
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    @include v.size-md {
+      flex-direction: column;
+    }
+    li {
+      margin: 0.5rem;
+    }
+    li.previous {
+      text-align: left;
+    }
+    li.next {
+      text-align: right;
+    }
+  }
+}
+
 aside {
   margin: 1rem;
 }

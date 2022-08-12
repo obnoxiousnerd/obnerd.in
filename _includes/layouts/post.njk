@@ -1,7 +1,6 @@
 ---
 layout: main
 ---
-
 <article class="h-entry">
   <header>
     <h1 class="p-name" class="title">{{ title }}</h1>
@@ -37,5 +36,31 @@ layout: main
     {{ content | safe }}
   </div>
 </article>
+
 <hr />
+
+{% if previousPost or nextPost %}
+<nav class="other-posts">
+  <ul>
+  {% if previousPost %}
+  <li class="previous">
+    <a href="{{ previousPost.url }}">
+      &larr; {{ previousPost.data.title }}
+    </a>
+  </li>
+  {% endif %}
+
+  {% if nextPost %}
+    <li class="next">
+      <a href="{{ nextPost.url }}">
+        {{ nextPost.data.title }} &rarr;
+      </a>
+    </li>
+  {% endif %}
+  </ul>
+</nav>
+{% endif %}
+
+<hr />
+
 {% include "../thingmajigs/comments.njk" %}
