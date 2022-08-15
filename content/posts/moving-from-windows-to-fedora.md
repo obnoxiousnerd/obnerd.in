@@ -3,7 +3,7 @@ title: Moving from Windows to Fedora
 description: An entry discussing the things I did to migrate my laptop from 
   Windows 11 to Fedora.
 date: 2022-08-02
-updated: 2022-08-05
+updated: 2022-08-15
 tags: [fedora, linux]
 ---
 
@@ -221,3 +221,8 @@ the Internet, run updates, do stuff. Life back to normal.
 - For some reason OBS outputs poor recordings when using the `FFMPEG VAAPI`
   encoder, so to make it print better, albeit more huge recordings, use CQP
   for "Rate Control" with QP=30 (works fine enough for my use case).
+- Because I have installed a custom Wi-Fi driver, some non-fatal error messages
+  are expected, but ABRT decided to let me know every single time about it. Due 
+  to this, there are 520 error reports in ABRT at the time. Reading the manpage 
+  of [`abrt-oops.conf`](https://www.mankier.com/5/abrt-oops.conf), setting the
+  option `OnlyFatalMCE` to `yes` does the trick.
