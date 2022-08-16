@@ -16,6 +16,8 @@ sections:
   label: Notes
   create: documents
   match: "**/*.md"
+  templates:
+  - note
 upload_dir: content/uploads
 public_path: "/uploads"
 front_matter_path: ''
