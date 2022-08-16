@@ -4,16 +4,28 @@ hide_body: false
 fields:
 - type: text
   name: title
-  label: title
+  label: Title
+  config:
+    required: true
 - type: text
   name: description
-  label: description
+  label: Description
+  config:
+    required: true
 - type: datetime
   name: date
-  label: date
+  label: Published
+  config:
+    required: true
+  default: now
 - type: datetime
   name: updated
-  label: updated
+  label: Updated
+  default: '2022-08-16T14:26:08Z'
+  description: The date this post was updated.
 - type: list
   name: tags
-  label: tags
+  label: Tags
+  description: Tags to categorize the post.
+  config:
+    use_select: false
