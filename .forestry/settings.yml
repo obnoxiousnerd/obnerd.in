@@ -5,12 +5,6 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
-  path: content/notes
-  label: Notes
-  create: documents
-  match: "**/*"
-  exclude: "**/*.json"
-- type: directory
   path: content/posts
   label: Posts
   create: documents
@@ -18,6 +12,12 @@ sections:
   exclude: "**/*.json"
   templates:
   - blog-post
+- type: directory
+  path: content/notes
+  label: Notes
+  create: documents
+  match: "**/*"
+  exclude: "**/*.json"
 upload_dir: content/uploads
 public_path: "/uploads"
 front_matter_path: ''
