@@ -8,16 +8,14 @@ sections:
   path: content/posts
   label: Posts
   create: documents
-  match: "**/*"
-  exclude: "**/*.json"
+  match: "**/*.md"
   templates:
   - blog-post
 - type: directory
   path: content/notes
   label: Notes
   create: documents
-  match: "**/*"
-  exclude: "**/*.json"
+  match: "**/*.md"
 upload_dir: content/uploads
 public_path: "/uploads"
 front_matter_path: ''
