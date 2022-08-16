@@ -4,7 +4,14 @@ hide_body: false
 fields:
 - type: datetime
   name: date
-  label: date
+  label: Date
+  description: The date this note was published.
+  config:
+    required: true
+  default: now
 - type: text
   name: title
-  label: title
+  label: Title
+  description: Title of the note.
+  config:
+    required: true
