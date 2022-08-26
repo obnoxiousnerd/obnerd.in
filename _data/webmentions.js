@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const fetch = require('node-fetch');
+const fetch = require('whatwg-fetch');
 const { AssetCache } = require('@11ty/eleventy-fetch');
 
 dotenv.config();

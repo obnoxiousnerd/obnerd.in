@@ -3,6 +3,7 @@ canonical = "https://karawale.in"
 description = "Pranav Karawale's various things in writing."
 webmentionUrl = "https://webmention.io/karawale.in/webmention"
 pingbackUrl = "https://webmention.io/karawale.in/xmlrpc"
+micropub = "https://retronav.de1.hashbang.sh/lilac/micropub"
 author = "Pranav Karawale"
 
 # Based on https://www.aleksandrhovhannisyan.com/blog/configuring-web-fonts-in-11ty-with-global-data/
